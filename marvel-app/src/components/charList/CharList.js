@@ -44,7 +44,7 @@ const CharList = (props) => {
             const image = item.thumbnail.includes('image_not_available') ? {objectFit: 'fill'} : null;
 
             return (
-                <CSSTransition key={i} timeout={500} classNames="char__item">
+                <CSSTransition key={item.id} timeout={500} classNames="char__item">
                     <li className='char__item' key={item.id}
                         onClick={() => {
                             props.onCharacterSelected(item.id);
@@ -75,7 +75,6 @@ const CharList = (props) => {
                 <TransitionGroup component={null}>
                     {items}
                 </TransitionGroup>
-                {/* </CSSTransition> */}
             </ul>
             {spinerOnLoading}
             <button className="button button__main button__long"
