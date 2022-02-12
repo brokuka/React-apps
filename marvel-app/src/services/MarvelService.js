@@ -1,63 +1,80 @@
-// const postData = async (url, data) => {
-//     let result = await fetch(url, {
-//         method: "POST",
-//         headers: {
-//             'Content-type': 'application/json'
-//         },
-//         body: data
-//     });
+import httpHook from "../hooks/http.hook";
 
-//     return await result.json();
-// };
+const useMarvelService = () => {
+    const {loading, error, request, clearError} = httpHook();
 
-class MarvelService {
-    _apiBase = 'https://gateway.marvel.com:443/v1/public/';
-    _apiKey = 'apikey=beaf4c2fe5feddb6dc23f95112d728dc';
-    charactersLimit = 'limit=9';
-    _baseOffset = 210;
-    _totalCharacters = 0;
+    const   _apiBase = 'https://gateway.marvel.com:443/v1/public/',
+            _apiKey = 'apikey=beaf4c2fe5feddb6dc23f95112d728dc',
+            charactersLimit = 'limit=9',
+            comicsLimit = 'limit=8';
 
-    getResource = async (url) => {
-        let result = await fetch(url);
+    let _charactersOffset = 210,
+        _comicsOffset = 0,
+        _totalCharacters = 0,
+        _totalComics = 0;
 
-        if (!result.ok) {
-            throw new Error(`Could not fetch ${url}, status: ${result.status}`)
-        }
+    const getAllCharacters = async (offset = _charactersOffset) => {
+        const result = await request(`${_apiBase}characters?${charactersLimit}&offset=${offset}&${_apiKey}`);
 
-        return await result.json();
+        _totalCharacters = result.data.total;
+
+        return result.data.results.map(_transformCharacter);
     }
 
-    getAllCharacters = async (offset = this._baseOffset) => {
-        const result = await this.getResource(`${this._apiBase}characters?${this.charactersLimit}&offset=${offset}&${this._apiKey}`);
+    const getAllComics = async (offset = _charactersOffset) => {
+        const result = await request(`${_apiBase}comics?orderBy=issueNumber&${comicsLimit}&offset=${offset}&${_apiKey}`);
 
-        this._totalCharacters = result.data.total;
+        _totalComics = result.data.total;
 
-        return result.data.results.map(this._transformCharacter);
+        return result.data.results.map(_transformComics);
     }
 
-    getCharacter = async (id) => {
-        const result = await this.getResource(`${this._apiBase}characters/${id}?&${this._apiKey}`);
+    const getCharacter = async (id) => {
+        const result = await request(`${_apiBase}characters/${id}?&${_apiKey}`);
 
-        return this._transformCharacter(result.data.results[0]);
+        return _transformCharacter(result.data.results[0]);
+    }
+
+    const getComic = async (id) => {
+        const result = await request(`${_apiBase}comics/${id}?&${_apiKey}`);
+
+        return _transformComics(result.data.results[0]);
     }
 
 
-    _transformCharacter = (character) => {
-        const descr = (str, num) => {
-            if (str) return str.slice(0, num) + '...';
-            else return 'There is no description';
-        }
+    const sliceDescription = (str, num) => {
+        if (str) return str.slice(0, num) + '...';
+        else return 'There is no description';
+    }
 
+    const _transformCharacter = (character) => {
         return {
             id: character.id,
             name: character.name,
-            description: descr(character.description, 150),
+            description: sliceDescription(character.description, 150),
             thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
             homepage: character.urls[0].url,
             wiki: character.urls[1].url,
             comics: character.comics.items
         }
     }
+
+    const _transformComics = (comics) => {
+        return {
+            id: comics.id,
+            title: comics.title,
+            description: comics.description || 'no description',
+            price: comics.prices[0].price ? `${comics.prices[0].price}$` : 'not avaliable',
+            thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension,
+            pages: comics.pageCount,
+            language: comics.textObjects.language || 'en-us'
+            // homepage: character.urls[0].url,
+            // wiki: character.urls[1].url,
+            // comics: character.comics.items
+        }
+    }
+
+    return {loading, error, getAllCharacters, getAllComics, getCharacter, getComic, clearError}
 }
 
-export default MarvelService;
+export default useMarvelService;

@@ -1,0 +1,88 @@
+@import "../../vars.scss";
+@import "../../mixins.scss";
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.cards__col {
+    padding: 0 rem(35);
+    margin-bottom: rem(60);
+}
+
+.cards__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 220px;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+
+    background-color: rgba($white, 65%);
+    border: 1px solid rgba($white, 65%);
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    transition: transform .2s ease-in-out;
+
+    &:last-child {
+        margin: 0;
+    }
+
+    &:hover {
+        transform: translateY(-10px);
+    }
+
+    &--filter, &--all {
+        box-shadow: 5px 5px 15px rgba($black, .25);
+
+        text-align: right;
+
+        .card__content {
+            p, span {
+                margin-bottom: 1.4rem;
+            }
+
+            .card__price {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.card__header {
+    width: 170px;
+    height: 150px;
+    margin-bottom: 1.4rem;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.card__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: $black;
+}
+
+.card__title {
+    margin-bottom: 1rem;
+}
+
+.card__price {
+    font-weight: 700;
+    text-align: right;
+}

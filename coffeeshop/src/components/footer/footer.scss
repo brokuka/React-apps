@@ -1,0 +1,45 @@
+@import "../../vars.scss";
+
+.footer__inner {
+    padding: 3rem 0;
+
+    text-align: center;
+
+    .nav {
+        margin-bottom: 2rem;
+
+        color: $black;
+    }
+}
+
+.footer__icon {
+    width: 29.3px;
+    height: 29.3px;
+    margin: 2rem auto 0;
+    position: relative;
+
+    .icon {
+        width: inherit;
+        height: inherit;
+    }
+
+    &::before, &::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 1px;
+
+        background-color: $black;
+
+        position: absolute;
+        top: 15px;
+    }
+
+    &::before {
+        left: -80px;
+    }
+
+    &::after {
+        left: 50px;
+    }
+}

@@ -1,5 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
-import MarvelService from '../../services/MarvelService';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/errorMessage';
 
@@ -7,42 +8,29 @@ import './charList.scss';
 
 const CharList = (props) => {
     const   [charactersList, setCharactersList] = useState([]),
-            [loading, setLoading] = useState(true),
-            [error, setError] = useState(false),
             [newItemLoading, setNewItemLoading] = useState(false),
             [offset, setOffset] = useState(0),
             [charactersEnded, setCharactersEnded] = useState(false);
 
-    const marvelService = new MarvelService();
+    const {loading, error, getAllCharacters} = useMarvelService();
 
     useEffect(() => {
-        onRequest()
+        onRequest(offset, true)
     }, [])
 
-    const onRequest = (offset) => {
-        onCharactersLoading();
-        marvelService.getAllCharacters(offset)
+    const onRequest = (offset, initial) => {
+        initial ? setNewItemLoading(false) : setNewItemLoading(true);
+        getAllCharacters(offset)
             .then(onCharactersLoaded)
-            .catch(onError);
-    }
-
-    const onCharactersLoading = () => {
-        setNewItemLoading(true)
     }
 
     const onCharactersLoaded = (newCharacters) => {
-        let ended = marvelService._totalCharacters - offset <= 9;
+        let ended = useMarvelService._totalCharacters - offset <= 9;
 
         setCharactersList(charactersList => [...charactersList, ...newCharacters]);
-        setLoading(loading => false);
         setNewItemLoading(newItemLoading => false);
         setOffset(offset => offset + 9);
         setCharactersEnded(charactersEnded => ended);
-    }
-
-    const onError = () => {
-        setError(true);
-        setLoading(loading => false);
     }
 
     const itemRefs = useRef([]);
@@ -56,16 +44,18 @@ const CharList = (props) => {
             const image = item.thumbnail.includes('image_not_available') ? {objectFit: 'fill'} : null;
 
             return (
-                <li className='char__item' key={item.id}
-                onClick={() => {
-                    props.onCharacterSelected(item.id);
-                    focusOnItem(i);
-                }}
-                tabIndex={0} onFocus={() => props.onCharacterSelected(item.id)}
-                ref={el => itemRefs.current[i] = el}>
-                    <img src={item.thumbnail} alt={item.name} style={image}/>
-                    <div className="char__name">{item.name}</div>
-                </li>
+                <CSSTransition key={i} timeout={500} classNames="char__item">
+                    <li className='char__item' key={item.id}
+                        onClick={() => {
+                            props.onCharacterSelected(item.id);
+                            focusOnItem(i);
+                        }}
+                        tabIndex={0} onFocus={() => props.onCharacterSelected(item.id)}
+                        ref={el => itemRefs.current[i] = el}>
+                            <img src={item.thumbnail} alt={item.name} style={image}/>
+                            <div className="char__name">{item.name}</div>
+                    </li>
+                </CSSTransition>
             )
         })
 
@@ -74,29 +64,27 @@ const CharList = (props) => {
 
     const   items = View(charactersList),
             errorMessage = error ? <ErrorMessage/> : null,
-            spinner = loading ? <Spinner/> : null,
-            content = !(errorMessage || spinner) ? items : null,
-            centered = loading ? {display: 'block'} : null,
-            spinerOnLoading = (newItemLoading && !loading) ? <Spinner/> : null;
+            spinner = loading && !newItemLoading ? <Spinner/> : null,
+            spinerOnLoading = (newItemLoading) ? <Spinner/> : null;
 
-        /* Active class: char__item_selected */
-
-        return (
-            <div className="char__list">
-                <ul className="char__grid" style={centered}>
-                    {errorMessage}
-                    {spinner}
-                    {content}
-                </ul>
-                {spinerOnLoading}
-                <button className="button button__main button__long"
-                        disabled={newItemLoading && !loading}
-                        onClick={() => onRequest(offset)}
-                        style={!loading && !charactersEnded ? {display: 'block'} : {display: 'none'}}>
-                    <div className="inner">load more</div>
-                </button>
-            </div>
-        )
+    return (
+        <div className="char__list">
+            <ul className="char__grid" style={spinner ? {display: 'block'} : null}>
+                {errorMessage}
+                {spinner}
+                <TransitionGroup component={null}>
+                    {items}
+                </TransitionGroup>
+                {/* </CSSTransition> */}
+            </ul>
+            {spinerOnLoading}
+            <button className="button button__main button__long"
+                    onClick={() => onRequest(offset)}
+                    style={!loading && !charactersEnded ? {display: 'block'} : {display: 'none'}}>
+                <div className="inner">load more</div>
+            </button>
+        </div>
+    )
 }
 
 export default CharList;

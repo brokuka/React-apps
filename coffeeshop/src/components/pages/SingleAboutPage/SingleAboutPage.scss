@@ -1,0 +1,46 @@
+@import "../../../vars.scss";
+@import "../../../mixins.scss";
+
+.about_it {
+    display: flex;
+    justify-content: center;
+    margin-bottom: rem(30);
+}
+
+.about_it__left {
+    flex: 0 0 392px;
+    margin-right: rem(55);
+}
+
+.about_it__right {
+    .about_it-country, .about_it-description {
+        margin-bottom: rem(16);
+    }
+
+    .about_it-country {
+        font-size: rem(14);
+        font-weight: 700;
+
+        span {
+            font-weight: 400;
+        }
+    }
+    .about_it-description {
+        font-size: rem(14);
+        font-weight: 700;
+
+        p {
+            display: inline;
+            font-weight: 400;
+        }
+    }
+    .about_it-price {
+        font-size: rem(14);
+        font-weight: 700;
+
+        span {
+            font-size: rem(24);
+            font-weight: 400;
+        }
+    }
+}

@@ -1,0 +1,60 @@
+@import "../../vars.scss";
+@import "../../mixins.scss";
+
+.intro {
+    margin-top: rem(111);
+}
+
+.intro__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        margin-bottom: rem(20);
+
+        font-size: rem(24);
+        color: $white;
+        font-weight: 700;
+    }
+}
+
+.intro__title {
+    margin-bottom: rem(20);
+
+    font-size: rem(40);
+    font-weight: 700;
+    color: $white;
+}
+
+.intro__icon {
+    width: 29.3px;
+    height: 29.3px;
+    margin-bottom: 34.7px;
+    position: relative;
+
+    &::before, &::after {
+        content: "";
+        width: 60px;
+        height: 1px;
+
+        background-color: $white;
+        box-shadow: $bxshIntroLines;
+
+        position: absolute;
+        top: 10px;
+    }
+
+    &::before {
+        left: -80px;
+    }
+
+    &::after {
+        left: 50px;
+    }
+
+    .icon {
+        width: inherit;
+        height: inherit;
+    }
+}

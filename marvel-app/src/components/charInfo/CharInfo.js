@@ -1,51 +1,34 @@
 import {useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ErrorMessage from '../errorMessage/errorMessage';
 import Spinner from '../spinner/Spinner';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import Skeleton from '../skeleton/Skeleton';
 
 import './charInfo.scss';
 
 const CharInfo = (props) => {
-    const   [character, setCharacter] = useState(null),
-            [loading, setLoading] = useState(false),
-            [error, setError] = useState(false);
+    const   [character, setCharacter] = useState(null);
 
-    const marvelService = new MarvelService();
-
-    useEffect(() => {
-        updateCharacter()
-    }, [])
+    const {loading, error, getCharacter, clearError} = useMarvelService();
 
     useEffect(() => {
         updateCharacter()
     }, [props.characterId])
 
-    const onCharacterLoading = () => {
-        setLoading(true);
-    }
-
     const onCharacterLoaded = (character) => {
         setCharacter(character);
-        setLoading(false);
-    }
-
-    const onError = () => {
-        setLoading(false);
-        setError(true);
     }
 
     const updateCharacter = () => {
+        clearError();
+
         const {characterId} = props;
 
         if (!characterId) return
 
-        onCharacterLoading();
-
-        marvelService
-            .getCharacter(characterId)
-            .then(onCharacterLoaded)
-            .catch(onError);
+        getCharacter(characterId)
+            .then(onCharacterLoaded);
     }
 
     const   skeleton = character || loading || error ? null : <Skeleton/>,
@@ -90,13 +73,15 @@ const View = ({character}) => {
                 {
                     comics.map((item, i) => {
                         if (i >= 9) return;
+                        // match(/\d/ig).join('');
+                        const filteredComics = item.resourceURI.replace(/\D/g, '').slice(1);
 
                         return (
-                            <a href={item.resourceURI} target="_blank" style={{width: '100%'}} key={i}>
+                            <Link to={`/comics/${filteredComics}`} style={{width: '100%'}} key={i}>
                                 <li className="char__comics-item">
                                     {item.name}
                                 </li>
-                            </a>
+                            </Link>
                         )
                     })
                 }

@@ -1,0 +1,28 @@
+@import "../../vars.scss";
+@import "../../mixins.scss";
+
+.nav {
+    display: inline-flex;
+    align-items: flex-end;
+
+    font-size: rem(12);
+    font-weight: 400;
+    color: $white;
+}
+
+.nav__link {
+    margin-right: rem(40);
+
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+        span {
+            text-decoration: underline;
+        }
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}

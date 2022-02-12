@@ -1,5 +1,5 @@
 import {useState, useEffect } from 'react';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/errorMessage';
 
@@ -7,11 +7,9 @@ import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
 
 const RandomChar = () => {
-    const   [character, setCharacter] = useState({}),
-            [loading, setLoading] = useState(true),
-            [error, setError] = useState(false);
+    const   [character, setCharacter] = useState({});
 
-    const marvelService = new MarvelService();
+    const {loading, error, getCharacter, clearError} = useMarvelService();
 
     useEffect(() => {
         updateCharacter();
@@ -23,29 +21,17 @@ const RandomChar = () => {
         }
     }, [])
 
-    const onCharacterLoading = () => {
-        setLoading(true)
-    }
-
     const onCharacterLoaded = (character) => {
         setCharacter(character);
-        setLoading(false);
-    }
-
-    const onError = () => {
-        setLoading(false);
-        setError(true);
     }
 
     const updateCharacter = () => {
+        clearError();
+
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
 
-        onCharacterLoading();
-
-        marvelService
-            .getCharacter(id)
-            .then(onCharacterLoaded)
-            .catch(onError);
+        getCharacter(id)
+            .then(onCharacterLoaded);
     }
 
     const   errorMessage = error ? <ErrorMessage/> : null,
@@ -75,8 +61,13 @@ const RandomChar = () => {
 }
 
 const View = ({character}) => {
-    const   {name, description, thumbnail, homepage, wiki} = character,
-            image = thumbnail.includes('image_not_available') ? {objectFit: 'fill'} : null;
+    const   {name, description, thumbnail, homepage, wiki} = character;
+
+    let image = null;
+
+    if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+        image = {objectFit: 'fill'}
+    }
 
     return (
         <div className="randomchar__block">

@@ -21,6 +21,20 @@
             font-size: 14px;
             line-height: 18px;
         }
+        &-enter {
+            opacity: 0;
+        }
+        &-enter-active {
+            opacity: 1;
+            transition: opacity 500ms;
+        }
+        &-exit {
+            opacity: 1;
+        }
+        &-exit-active {
+            opacity: 0;
+            transition: opacity 500ms;
+        }
         &-price {
             margin-top: 5px;
             font-weight: bold;

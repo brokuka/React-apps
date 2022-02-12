@@ -1,0 +1,71 @@
+.section--coffee {
+    margin-bottom: 6rem;
+
+    &::after {
+        content: "";
+        display: block;
+        width: 240px;
+        height: 1px;
+        margin: 6rem auto 0;
+
+        background-color: $black;
+    }
+}
+
+.section__icon {
+    width: 29.3px;
+    height: 29.3px;
+    margin: 2rem auto 0;
+    position: relative;
+
+    .icon {
+        width: inherit;
+        height: inherit;
+    }
+
+    &::before, &::after {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 1px;
+
+        background-color: $black;
+
+        position: absolute;
+        top: 15px;
+    }
+
+    &::before {
+        left: -80px;
+    }
+
+    &::after {
+        left: 50px;
+    }
+}
+
+.section__title {
+    margin-bottom: 40.7px;
+
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: $black;
+    text-align: center;
+}
+
+.section__text {
+    font-size: 1.4rem;
+    color: $black;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.section--about {
+    margin-bottom: rem(101);
+}
+
+.section--our_best {
+    padding: rem(80) 0 rem(110);
+
+    background: url("images/ourbest_bg.jpg") no-repeat center / cover;
+}

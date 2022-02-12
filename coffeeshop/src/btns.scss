@@ -1,0 +1,79 @@
+.btn {
+    display: inline-block;
+    vertical-align: top;
+
+    padding: 5px 42px;
+
+    background: none;
+    border: 1px solid $white;
+    border-radius: 3px;
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: $white;
+
+    transition: background-color .2s linear, color .2s linear;
+
+    &:hover {
+        background-color: $white;
+        color: $black;
+    }
+
+    &--filter {
+        margin-right: 5px;
+        padding: 7px 20px;
+
+        background: $white;
+        box-shadow: 4px 4px 20px rgba($black, .25);
+        border-radius: 0;
+        border: none;
+
+        font-size: 1.2rem;
+        color: $black;
+
+        transition: background-color .1s linear, color .1s linear;
+
+        &:hover {
+            background-color: $black;
+
+            color: $white;
+        }
+
+        &:first-of-type {
+            border-radius: 4px 0px 0px 4px;
+        }
+
+        &:last-of-type {
+            border-radius: 0 4px 4px 0;
+        }
+
+        @media (max-width: $tablet) {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+.btn-group {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    span {
+        margin-right: 3.5rem;
+
+        font-size: 1.4rem;
+    }
+
+    @media (max-width: $desktop-sm) {
+        justify-content: center;
+
+        text-align: center;
+
+        span {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+    }
+}

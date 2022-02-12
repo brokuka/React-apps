@@ -1,0 +1,127 @@
+{
+    "data": {
+        "total": 10,
+        "results": [
+            {
+                "id": "1",
+                "title": "Solimo Coffee Beans 2 kg",
+                "price": "10.73",
+                "selled": "5",
+                "country": "Brazil",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "thumbnail": {
+                    "path": "images/cards/card_1",
+                    "extension": "jpg",
+                    "alt": "Card thumbnail",
+                    "empty": "images/cards/image_not_available"
+                },
+                "fullPicture": {
+                    "path": "../images/cards/full",
+                    "extension": "jpg",
+                    "alt": "Full picture",
+                    "empty": "../images/cards/image_not_available"
+                }
+            },
+            {
+                "id": "2",
+                "title": "Presto Coffee Beans 1 kg",
+                "price": "15.99",
+                "selled": "5",
+                "country": "Brazil",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "thumbnail": {
+                    "path": "images/cards/card_2",
+                    "extension": "jpg",
+                    "alt": "Card thumbnail",
+                    "empty": "images/cards/image_not_available"
+                },
+                "fullPicture": {
+                    "path": "../images/cards/full",
+                    "extension": "jpg",
+                    "alt": "Full picture",
+                    "empty": "../images/cards/image_not_available"
+                }
+            },
+            {
+                "id": "3",
+                "title": "AROMISTICO Coffee 1 kg",
+                "price": "6.99",
+                "selled": "5",
+                "country": "Kenya",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "thumbnail": {
+                    "path": "images/cards/card_3",
+                    "extension": "jpg",
+                    "alt": "Card thumbnail",
+                    "empty": "images/cards/image_not_available"
+                },
+                "fullPicture": {
+                    "path": "images/cards/full",
+                    "extension": "jpg",
+                    "alt": "Full picture",
+                    "empty": "images/cards/image_not_available"
+                }
+            },
+            {
+                "id": "4",
+                "title": "TEST",
+                "price": "20",
+                "selled": "15",
+                "country": "Kenya",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "thumbnail": {
+                    "path": "",
+                    "extension": "jpg",
+                    "alt": "Card thumbnail",
+                    "empty": "images/cards/image_not_available"
+                },
+                "fullPicture": {
+                    "path": "../images/cards/full",
+                    "extension": "jpg",
+                    "alt": "Full picture",
+                    "empty": "../images/cards/image_not_available"
+                }
+            },
+            {
+                "id": "5",
+                "title": "Some coffee",
+                "price": "20",
+                "selled": "3",
+                "country": "Columbia",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "thumbnail": {
+                    "path": "",
+                    "extension": "jpg",
+                    "alt": "Card thumbnail",
+                    "empty": "images/cards/image_not_available"
+                },
+                "fullPicture": {
+                    "path": "../images/cards/full",
+                    "extension": "jpg",
+                    "alt": "Full picture",
+                    "empty": "../images/cards/image_not_available"
+                }
+            },
+            {
+                "id": "6",
+                "title": "Some coffee",
+                "price": "20",
+                "selled": "3",
+                "country": "Columbia",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "thumbnail": {
+                    "path": "",
+                    "extension": "jpg",
+                    "alt": "Card thumbnail",
+                    "empty": "images/cards/image_not_available"
+                },
+                "fullPicture": {
+                    "path": "../images/cards/full",
+                    "extension": "jpg",
+                    "alt": "Full picture",
+                    "empty": "../images/cards/image_not_available"
+                }
+            }
+        ]
+    }
+}

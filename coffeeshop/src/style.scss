@@ -1,0 +1,28 @@
+@use 'sass:math';
+
+@import './helpers.scss';
+@import './mixins.scss';
+@import './fonts.scss';
+@import './vars.scss';
+@import './header.scss';
+@import './btns.scss';
+@import './sections.scss';
+
+html {
+    font-size: #{$baseFontSize}px;
+}
+
+body {
+    font-family: $defaultFont;
+    font-weight: $defaultFontWeight;
+    font-size: $defaultFontSize;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 100%;
+    width: #{$container}px;
+    margin: 0 auto;
+    padding: 0 #{math.div($containerPadding, 2)}px;
+}
