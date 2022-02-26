@@ -1,7 +1,6 @@
 import {useState, useEffect } from 'react';
 import useMarvelService from '../../services/MarvelService';
-import Spinner from '../spinner/Spinner';
-import ErrorMessage from '../errorMessage/errorMessage';
+import setContent from '../../utils/setContent';
 
 import './randomChar.scss';
 import mjolnir from '../../resources/img/mjolnir.png';
@@ -9,7 +8,7 @@ import mjolnir from '../../resources/img/mjolnir.png';
 const RandomChar = () => {
     const   [character, setCharacter] = useState({});
 
-    const {loading, error, getCharacter, clearError} = useMarvelService();
+    const {getCharacter, clearError, process, setProcess} = useMarvelService();
 
     useEffect(() => {
         updateCharacter();
@@ -31,18 +30,13 @@ const RandomChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
 
         getCharacter(id)
-            .then(onCharacterLoaded);
+            .then(onCharacterLoaded)
+            .then(() => setProcess('confirmed'));
     }
-
-    const   errorMessage = error ? <ErrorMessage/> : null,
-            spinner = loading ? <Spinner/> : null,
-            content = !(error || loading) ? <View character={character}/> : null;
 
     return (
         <div className="randomchar">
-            {errorMessage}
-            {spinner}
-            {content}
+            {setContent(process, View, character)}
             <div className="randomchar__static">
                 <p className="randomchar__title">
                     Random character for today!<br/>
@@ -60,8 +54,8 @@ const RandomChar = () => {
     )
 }
 
-const View = ({character}) => {
-    const   {name, description, thumbnail, homepage, wiki} = character;
+const View = ({data}) => {
+    const   {name, description, thumbnail, homepage, wiki} = data;
 
     let image = null;
 
@@ -74,7 +68,7 @@ const View = ({character}) => {
         <img src={thumbnail} alt="Random character" className="randomchar__img" style={image}/>
             <div className="randomchar__info">
                 <p className="randomchar__name">{name}</p>
-                <p className="randomchar__descr">{description}</p>
+                <p className="randomchar__descr">{description ? `${description.slice(0, 150)}...` : 'There is no description'}</p>
                 <div className="randomchar__btns">
                     <a href={homepage} className="button button__main" target="_blank">
                         <div className="inner">homepage</div>

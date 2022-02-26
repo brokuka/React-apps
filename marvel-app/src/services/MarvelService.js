@@ -1,7 +1,7 @@
-import httpHook from "../hooks/http.hook";
+import {useHttp} from '../hooks/http.hook'
 
 const useMarvelService = () => {
-    const {loading, error, request, clearError} = httpHook();
+    const {request, clearError, process, setProcess} = useHttp();
 
     const   _apiBase = 'https://gateway.marvel.com:443/v1/public/',
             _apiKey = 'apikey=beaf4c2fe5feddb6dc23f95112d728dc',
@@ -41,17 +41,18 @@ const useMarvelService = () => {
         return _transformComics(result.data.results[0]);
     }
 
+    const getCharacterByName = async (name) => {
+        const result = await request(`${_apiBase}characters?name=${name}&${_apiKey}`);
 
-    const sliceDescription = (str, num) => {
-        if (str) return str.slice(0, num) + '...';
-        else return 'There is no description';
+        return result.data.results.map(_transformCharacter);
     }
 
     const _transformCharacter = (character) => {
+
         return {
             id: character.id,
             name: character.name,
-            description: sliceDescription(character.description, 150),
+            description: character.description,
             thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
             homepage: character.urls[0].url,
             wiki: character.urls[1].url,
@@ -68,13 +69,19 @@ const useMarvelService = () => {
             thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension,
             pages: comics.pageCount,
             language: comics.textObjects.language || 'en-us'
-            // homepage: character.urls[0].url,
-            // wiki: character.urls[1].url,
-            // comics: character.comics.items
         }
     }
 
-    return {loading, error, getAllCharacters, getAllComics, getCharacter, getComic, clearError}
+    return {
+        process,
+        setProcess,
+        getAllCharacters,
+        getAllComics,
+        getCharacter,
+        getComic,
+        getCharacterByName,
+        clearError
+    }
 }
 
 export default useMarvelService;

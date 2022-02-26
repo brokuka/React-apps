@@ -26,12 +26,10 @@ const SingleAboutPage = () => {
 
         getCard(cardId)
             .then(onAboutLoaded);
-
     }
 
     const onAboutLoaded = (about) => {
         setAbout(about);
-        console.log(cardId)
     }
 
     const   errorMessage = error ? <ErrorMessage/> : null,

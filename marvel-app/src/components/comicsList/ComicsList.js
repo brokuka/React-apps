@@ -7,13 +7,28 @@ import Spinner from '../spinner/Spinner';
 
 import './comicsList.scss';
 
+const setContent = (process, Component, newItemLoading) => {
+    switch(process) {
+        case 'waiting':
+            return <Spinner/>;
+        case 'loading':
+            return newItemLoading ? <Component/> : <Spinner/>;
+        case 'confirmed':
+            return <Component/>;
+        case 'error':
+            return <ErrorMessage/>;
+        default:
+            throw new Error('Unexpected process state');
+    }
+}
+
 const ComicsList = () => {
     const   [comicsList, setComicsList] = useState([]),
             [newItemLoading, setNewItemLoading] = useState(false),
             [offset, setOffset] = useState(0),
             [comicsEnded, setComicsEnded] = useState(false);
 
-    const {loading, error, getAllComics} = useMarvelService();
+    const {loading, getAllComics, process, setProcess} = useMarvelService();
 
     useEffect(() => {
         onRequest(offset, true)
@@ -23,6 +38,7 @@ const ComicsList = () => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
         getAllComics(offset)
             .then(onComicsLoaded)
+            .then(() => setProcess('confirmed'));
     }
 
     const onComicsLoaded = (newComics) => {
@@ -51,7 +67,7 @@ const ComicsList = () => {
                         tabIndex={0}
                         ref={el => itemRefs.current[i] = el}>
                             <Link to={`${item.id}`}>
-                                <img className="comics__item-img" src={item.thumbnail} alt={item.title} /* style={image} *//>
+                                <img className="comics__item-img" src={item.thumbnail} alt={item.title}/>
                                 <div className="comics__item-name">{item.title}</div>
                                 <div className="comics__item-price">{item.price}</div>
                             </Link>
@@ -64,23 +80,19 @@ const ComicsList = () => {
     }
 
     const   items = View(comicsList),
-            errorMessage = error ? <ErrorMessage/> : null,
-            spinner = loading && !newItemLoading ? <Spinner/> : null,
-            spinerOnLoading = (newItemLoading) ? <Spinner/> : null;
+            spinerOnLoading = newItemLoading ? <Spinner/> : null;
 
         return (
             <div className="comics__list">
-                <ul className="comics__grid" style={spinner ? {display: 'block'} : null}>
-                    {errorMessage}
-                    {spinner}
+                <ul className="comics__grid" style={process === 'loading' && !newItemLoading ? {display: 'block'} : {display: 'grid'}}>
                     <TransitionGroup component={null}>
-                        {items}
+                        {setContent(process, () => items, newItemLoading)}
                     </TransitionGroup>
                 </ul>
                 {spinerOnLoading}
                 <button className="button button__main button__long"
                         onClick={() => onRequest(offset)}
-                        style={!loading && !comicsEnded ? {display: 'block'} : {display: 'none'}}>
+                        style={process !== 'loading' && !comicsEnded ? {display: 'block'} : {display: 'none'}}>
                     <div className="inner">load more</div>
                 </button>
             </div>

@@ -1,4 +1,4 @@
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect, useRef, useMemo} from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import useMarvelService from '../../services/MarvelService';
 import Spinner from '../spinner/Spinner';
@@ -6,13 +6,28 @@ import ErrorMessage from '../errorMessage/errorMessage';
 
 import './charList.scss';
 
+const setContent = (process, Component, newItemLoading) => {
+    switch(process) {
+        case 'waiting':
+            return <Spinner/>;
+        case 'loading':
+            return newItemLoading ? <Component/> : <Spinner/>;
+        case 'confirmed':
+            return <Component/>;
+        case 'error':
+            return <ErrorMessage/>;
+        default:
+            throw new Error('Unexpected process state');
+    }
+}
+
 const CharList = (props) => {
     const   [charactersList, setCharactersList] = useState([]),
             [newItemLoading, setNewItemLoading] = useState(false),
             [offset, setOffset] = useState(0),
             [charactersEnded, setCharactersEnded] = useState(false);
 
-    const {loading, error, getAllCharacters} = useMarvelService();
+    const {loading, error, getAllCharacters, process, setProcess} = useMarvelService();
 
     useEffect(() => {
         onRequest(offset, true)
@@ -22,6 +37,7 @@ const CharList = (props) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
         getAllCharacters(offset)
             .then(onCharactersLoaded)
+            .then(() => setProcess('confirmed'));
     }
 
     const onCharactersLoaded = (newCharacters) => {
@@ -63,23 +79,22 @@ const CharList = (props) => {
     }
 
     const   items = View(charactersList),
-            errorMessage = error ? <ErrorMessage/> : null,
-            spinner = loading && !newItemLoading ? <Spinner/> : null,
-            spinerOnLoading = (newItemLoading) ? <Spinner/> : null;
+            spinerOnLoading = newItemLoading ? <Spinner/> : null,
+            elements = useMemo(() => {
+                return setContent(process, () => items, newItemLoading)
+            }, [process]);
 
     return (
         <div className="char__list">
-            <ul className="char__grid" style={spinner ? {display: 'block'} : null}>
-                {errorMessage}
-                {spinner}
+            <ul className="char__grid" style={process === 'loading' && !newItemLoading ? {display: 'block'} : {display: 'grid'}}>
                 <TransitionGroup component={null}>
-                    {items}
+                    {elements}
                 </TransitionGroup>
             </ul>
             {spinerOnLoading}
             <button className="button button__main button__long"
                     onClick={() => onRequest(offset)}
-                    style={!loading && !charactersEnded ? {display: 'block'} : {display: 'none'}}>
+                    style={process !== 'loading' && !charactersEnded ? {display: 'block'} : {display: 'none'}}>
                 <div className="inner">load more</div>
             </button>
         </div>
