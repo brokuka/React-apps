@@ -10,7 +10,8 @@ In the project directory, you can run:
 >> `npm start`\
 >> `npm test`\
 >> `npm run build`\
->> `npm run eject`\
+>> `npm run eject`
+
 > Run json-server: \
 >> `npm run server` \
 **Note: `npm run server` using by default port `3001` !**
