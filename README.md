@@ -11,4 +11,5 @@
 > * Validator:
 >> https://validator.w3.org/nu/?doc=http%3A%2F%2Fmy-react-pizza-is-here.herokuapp.com%2F
 <!-- > * Adaptive template: -->
-> * [Вёрстка](https://github.com/brokuka/Adaptive-for-react-apps#react-pizza 'Title')
+>
+> * [Вёрстка](https://github.com/brokuka/Adaptive-for-react-apps#react-pizza 'Ссылка на репозиторий')
