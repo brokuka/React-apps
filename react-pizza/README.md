@@ -6,11 +6,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-> Default Create-React-App scripts:
+>
+>Default Create-React-App scripts:
 >> `npm start`\
 >> `npm test`\
 >> `npm run build`\
 >> `npm run eject`
+
 > Run json-server:
 >> `npm run server` \
 **Note: `npm run server` using by default port `3001`**
