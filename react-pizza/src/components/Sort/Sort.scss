@@ -1,0 +1,63 @@
+@import "../index";
+
+.sorting {
+	position: relative;
+
+	font-size: 1.4rem;
+	font-weight: 700;
+
+	.icon-arrow {
+		margin-right: 3px;
+
+		transition: all .2s ease;
+		transform: rotate(180deg);
+
+		&.rotated {
+			transform: rotate(0);
+		}
+	}
+
+	.wrapped {
+		color: $orange;
+		font-weight: 400;
+
+		border-bottom: 1px dotted $orange;
+		cursor: pointer;
+	}
+
+	&__list {
+		max-width: 132px;
+		width: 100%;
+		padding: 13px 0 9px;
+
+		position: absolute;
+		top: 3rem;
+		right: 0;
+		z-index: 3;
+
+		border-radius: 1rem;
+		box-shadow: 0px 5px 15px rgba($black, 0.09);
+		background-color: $white;
+
+		li {
+			padding: 1.2rem 1.2rem 1.4rem;
+
+			font-size: 1.4rem;
+			color: $black;
+			font-weight: 400;
+
+			cursor: pointer;
+			transition: color .1s linear, background .1s linear;
+
+			&:hover:not(.active) {
+				outline: dotted 2px $orange;
+			}
+
+			&.active {
+				background-color: rgba(#FE5F1E0D, 0.05);
+				color: $orange;
+				font-weight: 700;
+			}
+		}
+	}
+}

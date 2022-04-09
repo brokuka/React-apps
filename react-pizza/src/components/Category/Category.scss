@@ -1,0 +1,28 @@
+@import "../index";
+
+.category {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 3.2rem;
+	gap: 2rem;
+
+	@include tablet {
+		flex-wrap: wrap;
+		justify-content: center;
+
+		&>div:first-child {
+			flex: 1 0 100%;
+		}
+	}
+
+	.btn-group {
+		flex-wrap: nowrap;
+		max-width: fit-content;
+		overflow-x: auto;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
+}

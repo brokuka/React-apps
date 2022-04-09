@@ -1,0 +1,211 @@
+@import "../index";
+
+.btn {
+	display: inline-block;
+	padding: 0.6875em;
+
+	border: none;
+	border-radius: 3rem;
+	background: $orange;
+
+	font-family: inherit;
+	font-size: 1.6rem;
+	color: $white;
+	font-weight: 400;
+
+	cursor: pointer;
+	transition: all .1s linear;
+
+	&:hover {
+		background-color: darken($orange, 10%);
+	}
+}
+
+.btn--header-cart {
+	padding: 0.7625em 1.4375em;
+
+	background: $orange;
+
+	@include adaptiveValue(font-size, 16, 14, 1);
+	color: $white;
+	font-weight: 700;
+
+	&:hover {
+		background-color: darken($orange, 10%);
+	}
+}
+
+.btn--cart {
+	width: 32px;
+	height: 32px;
+	padding: 0;
+
+	border-radius: 50%;
+	border: 1px solid $orange;
+	background: none;
+
+	&:hover {
+		background-color: $orange;
+
+		.icon-minus,
+		.icon-plus,
+		.icon-x {
+			fill: $white;
+		}
+	}
+
+	&--x {
+		border: 1px solid #D0D0D0;
+
+		&:hover {
+			border-color: $orange;
+		}
+	}
+}
+
+.btn--grey {
+	padding: .8125em 2.1em;
+
+	font-size: 1.6rem;
+	color: #2C2C2C;
+	font-weight: 700;
+
+	background-color: #F9F9F9;
+
+	&:hover {
+		background-color: darken(#F9F9F9, 5%);
+	}
+
+	&:not(:last-child) {
+		margin-right: 8.95px;
+	}
+
+	&.active {
+		color: $white;
+
+		background-color: #282828;
+	}
+}
+
+.btn--ghost {
+	padding: 0.6875em;
+
+	border: 1px solid $orange;
+	background: none;
+
+	font-size: 1.6rem;
+	color: $orange;
+	font-weight: 700;
+
+	&:hover {
+		background-color: $orange;
+
+		color: $white;
+
+		.icon-plus {
+			fill: $white;
+		}
+
+		.counter {
+			background-color: $white;
+
+			color: $orange;
+		}
+	}
+
+	.counter {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: 5px;
+		padding: 0.2em;
+		// padding: 0.284615em 0.5384615385em;
+		min-width: 22px;
+		min-height: 22px;
+
+		font-size: 1.3rem;
+		color: $white;
+		font-weight: 700;
+
+		border-radius: 50%;
+		background-color: $orange;
+	}
+}
+
+.btn--cart {
+	width: 32px;
+	height: 32px;
+
+	border-radius: 50%;
+	border: 1px solid $orange;
+
+	&:hover {
+		background-color: $orange;
+
+		.icon-minus,
+		.icon-plus,
+		.icon-x {
+			fill: $white;
+		}
+	}
+
+	&-x {
+		border: 1px solid #D0D0D0;
+
+		&:hover {
+			border-color: $orange;
+		}
+	}
+}
+
+.btn--back {
+	max-width: 211px;
+	width: 100%;
+	padding: 1.0625em 2.1758em;
+	justify-content: space-between;
+
+	border: 1px solid #CACACA;
+	background: none;
+
+	font-size: 1.6rem;
+	color: #CACACA;
+	text-align: center;
+
+	&:hover {
+		border-color: $orange;
+		background-color: $orange;
+
+		color: $white;
+
+		.icon-back {
+			stroke: $white;
+		}
+	}
+
+	&-dark {
+		border: none;
+		background-color: #282828;
+
+		color: $white;
+
+		&:hover {
+			background-color: darken(#282828, 25%);
+		}
+	}
+}
+
+.btn--pay {
+	max-width: 211px;
+	width: 100%;
+	padding: 1.0625em 2.1758em;
+
+	background-color: $orange;
+
+	font-size: 1.6rem;
+	color: $white;
+	text-align: center;
+
+	&:hover {
+		background-color: #e84401;
+	}
+}

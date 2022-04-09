@@ -1,0 +1,17 @@
+@import "../index";
+
+.pizza-list {
+
+	&__title {
+		margin-bottom: 3.5rem;
+
+		font-size: 3.2rem;
+		color: $black;
+		font-weight: 700;
+	}
+
+	.row {
+		@include adaptiveValue(row-gap, 65, 45, 1);
+	}
+}
+
