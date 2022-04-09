@@ -17,7 +17,8 @@ In the project directory, you can run:
 
 > Run json-server:
 
->> `npm run server` .\ **Note: `npm run server` using by default port 3001!**
+>> `npm run server` \
+**Note: `npm run server` using by default port 3001!**
 <!--
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
