@@ -7,11 +7,11 @@ In the project directory, you can run:
 
 >Default Create-React-App scripts:
 >>  npm `start`
-
+>>
 >>  npm `test`
-
+>>
 >>  npm `run build`
-
+>>
 >>  npm `run eject`
 
 >Run json-server:
