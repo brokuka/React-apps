@@ -1,0 +1,32 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/vars' as *;
+
+@include createCustomLayout();
+@include createCustomLayout(ds, $desktop);
+@include createCustomLayout(sd, $desktopSm);
+@include createCustomLayout(tb, $tablet);
+@include createCustomLayout(mb, $mobile);
+
+.mb_none {
+	@include mobile {
+		display: none;
+	}
+}
+
+.tb_none {
+	@include tablet {
+		display: none;
+	}
+}
+
+.sd_none {
+	@include smDesktop {
+		display: none;
+	}
+}
+
+.ds_none {
+	@include desktop {
+		display: none;
+	}
+}

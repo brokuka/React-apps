@@ -1,0 +1,154 @@
+@use '../vars.scss' as *;
+
+
+@mixin rowGap($defaultGap, $minGap: null) {
+	@if $minGap ==null {
+		row-gap: $defaultGap + rem;
+	}
+
+	@else {
+		@include adaptiveValue(row-gap, $defaultGap, $minGap);
+	}
+
+	@supports not (row-gap: $defaultGap + rem) {
+		@if $minGap ==null {
+			margin-top: -$defaultGap + rem;
+		}
+
+		@else {
+			@include adaptiveValue(margin-top, -$defaultGap, -$minGap);
+		}
+
+		>* {
+			@if $minGap ==null {
+				margin-top: $defaultGap + rem;
+			}
+
+			@else {
+				@include adaptiveValue(margin-top, -$defaultGap, -$minGap);
+			}
+		}
+	}
+}
+
+@mixin columnGap($defaultGap, $minGap: null) {
+	@if $minGap ==null {
+		column-gap: $defaultGap + rem;
+	}
+
+	@else {
+		@include adaptiveValue(column-gap, $defaultGap, $minGap);
+	}
+
+	@supports not (column-gap: $defaultGap + rem) {
+		@if $minGap ==null {
+			margin-left: $defaultGap + rem;
+		}
+
+		@else {
+			@include adaptiveValue(margin-left, $defaultGap, -$minGap);
+		}
+
+
+		&:not([dir='rtl']) {
+			>* {
+				@if $minGap ==null {
+					margin-left: -$defaultGap + rem;
+				}
+
+				@else {
+					@include adaptiveValue(margin-left, -$defaultGap, $minGap);
+				}
+			}
+		}
+
+		&[dir='rtl'] {
+			@if $minGap ==null {
+				margin-left: -$defaultGap + rem;
+			}
+
+			@else {
+				@include adaptiveValue(margin-right, -$defaultGap, $minGap);
+			}
+		}
+	}
+}
+
+
+@mixin calcGridPercent($value, $gridCount) {
+	flex: 0 0 auto;
+	width: calc(($value * 100% / $gridCount));
+}
+
+@mixin createCustomLayout($name: col, $val: $name, $gridCount: 12) {
+	@for $i from 1 through $gridCount {
+		@if ($name==col) {
+			.col-auto {
+				width: auto;
+			}
+
+			.col-#{$i} {
+				@include calcGridPercent($i, $gridCount);
+			}
+		}
+
+		@else {
+			@media (max-width: #{$val}px) {
+				.col-#{$name}-auto {
+					width: auto;
+				}
+
+				.col-#{$name}-#{$i} {
+					@include calcGridPercent($i, $gridCount);
+				}
+			}
+		}
+	}
+}
+
+@mixin mobile {
+	@media (max-width: #{$mobile}px) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (max-width: #{$tablet}px) {
+		@content;
+	}
+}
+
+@mixin smDesktop {
+	@media (max-width: #{$desktopSm}px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media (max-width: #{$desktop}px) {
+		@content;
+	}
+}
+
+@mixin bgDesktop {
+	@media (max-width: #{$desktopLg}px) {
+		@content;
+	}
+}
+
+@mixin wMinMax($min: 320, $max) {
+	@media (min-width: #{$min}px) and (max-width: #{$max}px) {
+		@content;
+	}
+}
+
+@mixin centerGrid {
+	@include smDesktop {
+		justify-content: center;
+	}
+
+	@include tablet {
+		grid-template-columns: 100%;
+		justify-items: center;
+	}
+}

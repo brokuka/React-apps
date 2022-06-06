@@ -1,0 +1,20 @@
+@mixin font($fontName, $fileName, $fontWeight: 400, $fontStyle: normal) {
+	@font-face {
+		font-family: '#{$fontName}';
+		font-display: swap;
+		font-weight: $fontWeight;
+		font-style: $fontStyle;
+		src: url('../../assets/fonts/#{$fileName}.eot');
+		src: url("../../assets/fonts/#{$fileName}.eot?#iefix") format('embedded-opentype'),
+		url("../../assets/fonts/#{$fileName}.woff") format('woff'),
+		url("../../assets/fonts/#{$fileName}.woff2") format('woff2'),
+		url("../../assets/fonts/#{$fileName}.ttf") format('truetype'),
+		url("../../assets/fonts/#{$fileName}.svg##{$fontName}") format('svg');
+	}
+}
+
+@include font(Raleway, raleway-v27-latin_cyrillic-400);
+@include font(Raleway, raleway-v27-latin_cyrillic-500, 500);
+@include font(Raleway, raleway-v27-latin_cyrillic-700, 700);
+@include font(Raleway, raleway-v27-latin_cyrillic-800, 800);
+@include font(Roboto, roboto-v29-latin_cyrillic-300, 300);

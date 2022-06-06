@@ -1,0 +1,190 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	@include adaptiveValue(padding-top, 10.5, 6);
+	@include adaptiveValue(padding-bottom, 10.5, 6);
+
+	background-color: #F1EADC;
+}
+
+.line_1 {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-bottom: 2rem;
+
+	@include tablet {
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+.nav {
+	@include text-nav;
+	display: flex;
+	flex-wrap: wrap;
+	word-break: break-all;
+	@include adaptiveValue(column-gap, 4.5, 2.5);
+	@include rowGap(1);
+
+	@include tablet {
+		justify-content: center;
+		margin-bottom: 2rem;
+	}
+
+	@include mobile {
+		justify-items: center;
+	}
+
+	.nav_link {
+
+		&:not(.active):hover {
+			text-decoration: underline;
+		}
+
+		&.active {
+			color: $color-primary;
+			font-weight: 700;
+		}
+	}
+}
+
+.line_2 {
+	justify-content: space-between;
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	@include tablet {
+		align-items: center;
+		text-align: center;
+
+		[class*=col] {
+			&:nth-child(1) {
+				order: 3;
+			}
+
+			&:nth-child(2) {
+				order: 1;
+			}
+
+			&:nth-child(3) {
+				order: 2;
+			}
+		}
+	}
+}
+
+.list_info {
+	@include text-list;
+
+	color: $black;
+
+	li:not(:last-child) {
+		margin-bottom: 6px;
+	}
+
+	@include tablet {
+		margin-right: 0;
+	}
+}
+
+.list_clothes {
+	@include text-list;
+
+	color: $black;
+
+	li:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+
+	@include tablet {
+		display: none;
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+}
+
+.socials_payment {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: flex-end;
+
+	@include tablet {
+		margin-bottom: 2rem;
+		align-items: center;
+	}
+}
+
+.logo {
+	@include text-logo;
+	display: flex;
+	align-items: center;
+	height: fit-content;
+
+	color: $black;
+
+	span {
+		margin-left: 1.1rem;
+	}
+
+	@include tablet {
+		margin-bottom: 2rem;
+	}
+}
+
+.items_group>a {
+	@include text-sm;
+	display: block;
+
+	color: $black;
+	text-align: right;
+
+	&:hover {
+		text-decoration: underline;
+	}
+
+	&:not(:last-child) {
+		margin-bottom: 9px;
+	}
+
+	@include tablet {
+		text-align: center;
+	}
+}
+
+.socials_group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	@include adaptiveValue(margin-bottom, 3, 1);
+
+	a:not(:last-child) {
+		margin-right: 1.2rem;
+	}
+
+	a:hover {
+
+		svg {
+			fill: $color-primary;
+		}
+	}
+
+	@include tablet {
+		justify-content: center;
+	}
+}
+
+.payment_group {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	svg:first-child {
+		margin-right: 1rem;
+	}
+}

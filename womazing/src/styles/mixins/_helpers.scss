@@ -1,0 +1,144 @@
+@use 'sass:math';
+@use '../vars' as *;
+
+@function strip-unit($number) {
+	@if type-of($number)=='number' and not unitless($number) {
+		@return math.div($number, $number * 0 + 1);
+	}
+
+	@return $number;
+}
+
+@function rem($pxValue) {
+	@return strip-unit(math.div($pxValue, $baseFontSize)) * 1rem;
+}
+
+@function remToPx($value, $type: 1) {
+	@if $type ==1 {
+		@return (strip-unit($value) * $baseFontSize)+px
+	}
+
+	@else {
+		@return strip-unit($value) * $baseFontSize;
+	}
+}
+
+@mixin adaptiveValue($property, $startSize, $minSize, $rem: 1, $type: 1) {
+
+	@if $rem ==1 {
+		$addSize: strip-unit(remToPx($startSize - $minSize, 2));
+
+		@if $type==1 {
+			/* Если меньше контейнера */
+			#{$property}: remToPx($startSize);
+
+			@media (max-width: #{$maxWidthContainer + px}) {
+				#{$property}: calc(#{remToPx($minSize)} + #{$addSize} *((100vw - 320px) / #{$maxWidthContainer - 320}));
+			}
+		}
+
+		@else if $type==2 {
+			/* Если больше контейнера */
+			#{$property}: $startSize + px;
+
+			@media (min-width: #{$maxWidthContainer + px}) {
+				#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
+			}
+		}
+
+		@else {
+			/* Всегда */
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
+		}
+	}
+
+	@else {
+		$addSize: $startSize - $minSize;
+
+		@if $type==1 {
+			/* Если меньше контейнера */
+			#{$property}: $startSize + px;
+
+			@media (max-width: #{$maxWidthContainer + px}) {
+				#{$property}: calc(#{$minSize + px} + #{$addSize} *((100vw - 320px) / #{$maxWidthContainer - 320}));
+			}
+		}
+
+		@else if $type==2 {
+			/* Если больше контейнера */
+			#{$property}: $startSize + px;
+
+			@media (min-width: #{$maxWidthContainer + px}) {
+				#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
+			}
+		}
+
+		@else {
+			/* Всегда */
+			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
+		}
+	}
+}
+
+@mixin g-0 {
+	margin-right: 0;
+	margin-left: 0;
+}
+
+@mixin fixedWidthHeight($w, $h: $w, $rem: 1) {
+	@if $rem ==1 {
+		width: rem($w);
+		height: rem($h);
+	}
+
+	@else {
+		width: $w + px;
+		height: $h + px;
+	}
+}
+
+@mixin animationEase {
+	transition: all .5s ease;
+}
+
+@mixin price($type: 1, $mr: 1rem, $color: $color-secondary, $td: 1) {
+
+	.price,
+	.old_price {
+		@if $type ==1 {
+			@include text-price;
+		}
+
+		@else {
+			@include text-h2;
+
+			@include smDesktop {
+				@include adaptiveValue(font-size, 4, 2);
+			}
+		}
+
+		color: $color;
+
+		&::before {
+			content: "\0024";
+
+			color: inherit;
+		}
+	}
+
+	.old_price {
+		color: #9C9C9C;
+
+		&:not(:last-child) {
+			margin-right: $mr;
+		}
+
+		&:last-child {
+			margin-left: $mr;
+		}
+
+		@if $td ==1 {
+			text-decoration: line-through;
+		}
+	}
+}

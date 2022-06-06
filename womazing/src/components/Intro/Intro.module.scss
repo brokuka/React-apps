@@ -1,0 +1,120 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	height: 826px;
+	margin-bottom: 14rem;
+	@include adaptiveValue(padding-top, 4, 0);
+
+	&::after {
+		content: "";
+
+		// width: 844px;
+		@include adaptiveValue(width, 84.4, 2);
+		height: inherit;
+
+		position: absolute;
+		top: 0;
+		right: -80px;
+		z-index: -1;
+
+		transform: translateX(-80px);
+
+		background-color: $color-ecru-white;
+
+		@include smDesktop {
+			display: none;
+		}
+	}
+
+	@include smDesktop {
+		display: flex;
+		align-items: center;
+		height: 100vh;
+	}
+
+	@include tablet {
+		margin-bottom: 0;
+	}
+}
+
+.slider {
+	justify-content: space-between;
+	align-items: center;
+
+	@include smDesktop {
+		justify-content: center;
+	}
+}
+
+.btn_group {
+	display: flex;
+	max-width: 385px;
+	justify-content: flex-end;
+	margin-top: 5.2rem;
+	@include adaptiveValue(margin-bottom, 12.6, 2.6);
+
+	@include smDesktop {
+		justify-content: center;
+		max-width: 100%;
+	}
+}
+
+.seconds_col {
+	@include smDesktop {
+		display: none;
+	}
+}
+
+.img {
+	margin-left: auto;
+}
+
+.slider_text {
+	max-width: 567px;
+	width: 100%;
+	margin-left: 0;
+}
+
+.slider_image {
+	max-width: 410px;
+	width: 100%;
+	margin-right: 0;
+}
+
+.slider_pagination {
+	max-width: 385px;
+	justify-content: flex-end;
+
+	@include smDesktop {
+		justify-content: center;
+		max-width: 100%;
+	}
+}
+
+.title {
+	@include text-h1;
+	@include adaptiveValue(margin-bottom, 4.5, 2.5);
+
+	@include smDesktop {
+		text-align: center;
+	}
+}
+
+.subtitle {
+	max-width: 385px;
+	width: 100%;
+	margin-right: auto;
+
+	font-size: 2rem;
+	color: $black;
+	font-weight: 400;
+	line-height: 140%;
+	letter-spacing: 0.02em;
+	text-align: right;
+
+	@include smDesktop {
+		text-align: center;
+		margin-right: initial;
+	}
+}

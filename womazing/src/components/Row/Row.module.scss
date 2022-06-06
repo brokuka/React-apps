@@ -1,0 +1,14 @@
+@use "../../styles/mixins" as *;
+
+.root {
+	display: flex;
+	flex-direction: row;
+}
+
+.column {
+	flex-direction: column;
+}
+
+.wrap {
+	flex-wrap: wrap;
+}

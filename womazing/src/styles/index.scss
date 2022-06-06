@@ -1,0 +1,22 @@
+@use 'sass:math';
+
+@use './helpers' as *;
+@use './mixins' as *;
+@use './vars' as *;
+
+
+html {
+	font-size: #{$baseFontSize}px;
+}
+
+body {
+	font-family: $defaultFont;
+	font-weight: $defaultFontWeight;
+	font-size: $defaultFontSize;
+}
+
+#page {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
