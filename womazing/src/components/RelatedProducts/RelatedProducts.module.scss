@@ -1,0 +1,17 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	@include adaptiveValue(margin-top, 13, 7);
+}
+
+.title {
+	@include adaptiveValue(margin-bottom, 6.7, 3.7);
+
+	@include text-h2;
+	color: $black;
+
+	@include smDesktop {
+		text-align: center;
+	}
+}

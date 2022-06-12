@@ -1,0 +1,18 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	@include adaptiveValue(margin-bottom, 13, 8);
+	padding-top: $headerHeight;
+	flex: 1 1 auto;
+}
+
+.block {
+	@include adaptiveValue(margin-bottom, 13, 8);
+	@include adaptiveValue(padding-top, 19, 15);
+	flex: 1 1 auto;
+}
+
+.header {
+	@include adaptiveValue(margin-bottom, 21.4, 5.4);
+}

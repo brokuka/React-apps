@@ -1,0 +1,89 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	@include adaptiveValue(margin-top, 10.2, 3.2);
+}
+
+.content {
+	@include columnGap(7.4, 5);
+	@include rowGap(2);
+	align-items: center;
+
+	@include tablet {
+		justify-content: center;
+		flex-direction: column;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.slider {
+		width: 100%;
+		max-height: 729px;
+		height: 100%;
+
+		.img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+}
+
+
+.prices,
+.size,
+.color {
+	@include adaptiveValue(margin-bottom, 5.9, 3.9);
+
+	@include tablet {
+		text-align: center;
+	}
+}
+
+// .price {
+// 	@include price(null, 2.9rem);
+
+// 	@include tablet {
+// 		@include price(null, 1rem);
+// 	}
+// }
+
+@include price(null, 2.9rem);
+
+@include tablet {
+	@include price(null, 1rem);
+}
+
+.size,
+.color {
+	.btn_group {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, 4.1rem);
+		grid-auto-rows: 4.1rem;
+		@include rowGap(1.4);
+		@include columnGap(1.4);
+
+		@include tablet {
+			justify-content: center;
+			grid-template-columns: repeat(3, 4.1rem);
+		}
+	}
+}
+
+.size_title,
+.color_title {
+	margin-bottom: 3.4rem;
+	@include text-h4;
+}
+
+.count_cart {
+	.btn_group {
+		display: flex;
+		@include rowGap(1.1);
+		@include columnGap(1.1);
+
+		@include tablet {
+			justify-content: center;
+		}
+	}
+}

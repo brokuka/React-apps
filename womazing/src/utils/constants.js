@@ -1,4 +1,8 @@
 export const AppRoute = {
   HOME: "/",
-  CATALOG: "/catalog",
+  SHOP: "/shop/",
+  PRODUCT: "/:categoryId/:id",
+  ABOUT: "/about",
+  CONTACTS: "/contacts",
+  CART: "/cart",
 };

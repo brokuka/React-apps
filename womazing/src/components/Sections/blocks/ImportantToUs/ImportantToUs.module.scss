@@ -1,0 +1,34 @@
+@use '../../../../styles/vars' as *;
+@use '../../../../styles/mixins' as *;
+
+.cards {
+	@include centerGrid;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 350px);
+	gap: 3rem;
+}
+
+.icon {
+	@include adaptiveValue(margin-bottom, 3.7, 1.5);
+}
+
+.title {
+	@include adaptiveValue(margin-bottom, 2.4, 1.5);
+	@include text-h3;
+
+	color: $black;
+}
+
+.text {
+	@include text;
+	color: $black;
+}
+
+@include tablet {
+
+	.icon,
+	.title,
+	.text {
+		text-align: center
+	}
+}

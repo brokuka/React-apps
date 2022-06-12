@@ -1,0 +1,495 @@
+{
+	"products": [
+		{
+			"id": 1,
+			"categoryId": 1,
+			"category": "Пальто",
+			"title": "Футболка USA",
+			"newCollection": true,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/3.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/3.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			},
+			"related": {
+				"id": [
+					2,
+					3
+				]
+			}
+		},
+		{
+			"id": 2,
+			"categoryId": 2,
+			"category": "Свитшоты",
+			"title": "Футболка USA",
+			"newCollection": true,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/1.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/1.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			},
+			"related": {
+				"id": [
+					6,
+					7
+				]
+			}
+		},
+		{
+			"id": 3,
+			"categoryId": 3,
+			"category": "Кардиганы",
+			"title": "Футболка USA",
+			"newCollection": true,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/2.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/2.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			},
+			"related": {
+				"id": [
+					1,
+					2
+				]
+			}
+		},
+		{
+			"id": 4,
+			"categoryId": 4,
+			"category": "Толстовки",
+			"title": "Футболка USA",
+			"newCollection": false,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/1.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/1.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			}
+		},
+		{
+			"id": 5,
+			"categoryId": 2,
+			"category": "Свитшоты",
+			"title": "Футболка USA",
+			"newCollection": false,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/2.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/2.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			}
+		},
+		{
+			"id": 6,
+			"categoryId": 2,
+			"category": "Свитшоты",
+			"title": "Футболка USA",
+			"newCollection": false,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/3.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/3.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			}
+		},
+		{
+			"id": 7,
+			"categoryId": 2,
+			"category": "Свитшоты",
+			"title": "Футболка USA",
+			"newCollection": false,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/3.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/3.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			}
+		},
+		{
+			"id": 8,
+			"categoryId": 2,
+			"category": "Свитшоты",
+			"title": "Футболка USA",
+			"newCollection": false,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/2.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/2.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			}
+		},
+		{
+			"id": 9,
+			"categoryId": 2,
+			"category": "Свитшоты",
+			"title": "Футболка USA",
+			"newCollection": false,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/1.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/1.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			}
+		},
+		{
+			"id": 10,
+			"categoryId": 2,
+			"category": "Свитшоты",
+			"title": "Футболка USA",
+			"newCollection": false,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/2.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/2.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			},
+			"related": {
+				"id": [
+					8
+				]
+			}
+		},
+		{
+			"id": 11,
+			"categoryId": 2,
+			"category": "Свитшоты",
+			"title": "Футболка USA",
+			"newCollection": false,
+			"prices": {
+				"price": 129,
+				"oldPrice": 229
+			},
+			"colors": [
+				"#927876",
+				"#D4D4D4",
+				"#FD9696",
+				"#FDC796"
+			],
+			"sizes": [
+				"S",
+				"M",
+				"L",
+				"XL",
+				"XXL"
+			],
+			"img": {
+				"jpg": {
+					"src": "/images/products/3.jpg"
+				},
+				"webp": {
+					"type": "image/webp",
+					"src": "/images/products/3.webp"
+				},
+				"card": {
+					"width": 350,
+					"height": 478
+				},
+				"single": {
+					"width": 536,
+					"height": 729
+				},
+				"alt": "Girl"
+			},
+			"related": {
+				"id": [
+					4,
+					5
+				]
+			}
+		}
+	]
+}

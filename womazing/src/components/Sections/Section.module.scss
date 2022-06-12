@@ -1,0 +1,20 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	&:not(:last-child) {
+		@include adaptiveValue(margin-bottom, 13, 8);
+	}
+}
+
+.title {
+	@include adaptiveValue(margin-bottom, 9.2, 4);
+	@include text-h2;
+	@include adaptiveValue(font-size, 4, 3.5);
+
+	color: $black;
+
+	@include smDesktop {
+		text-align: center
+	}
+}

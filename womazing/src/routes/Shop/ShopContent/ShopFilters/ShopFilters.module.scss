@@ -1,0 +1,11 @@
+@use '../../../../styles/mixins' as *;
+
+.root {
+	@include adaptiveValue(margin-bottom, 9.2, 3.2);
+	overflow-x: auto;
+}
+
+.group {
+	display: flex;
+	@include columnGap(1);
+}

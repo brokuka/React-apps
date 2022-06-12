@@ -20,3 +20,20 @@ body {
 	flex-direction: column;
 	min-height: 100vh;
 }
+
+.bullet {
+	display: inline-block;
+	width: 30px;
+	height: 4px;
+
+	cursor: pointer;
+	background-color: rgba($white, 0.36);
+
+	&:not(:last-child) {
+		margin-right: 1.2rem;
+	}
+}
+
+.bullet_active {
+	background-color: $white;
+}

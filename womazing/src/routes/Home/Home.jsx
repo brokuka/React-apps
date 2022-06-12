@@ -1,11 +1,14 @@
 import React from "react";
 import Intro from "../../components/Intro/Intro";
+import Main from "../../components/Main/Main";
+import Section from "../../components/Sections/Sections";
 
 const Home = () => {
   return (
-    <main>
+    <Main root>
       <Intro />
-    </main>
+      <Section />
+    </Main>
   );
 };
 

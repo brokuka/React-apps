@@ -1,11 +1,17 @@
 import React from "react";
-import "./Icon.scss";
+import cn from "classnames";
 
-const Icon = ({ name, color, size, stroke, className, href }) => {
+/* Style */
+import styles from "./Icon.module.scss";
+
+const Icon = ({ name, color, size, stroke, className, href, rotate }) => {
   return (
     <>
       <svg
-        className={`${name}-icon ${!className ? "" : className}`}
+        // className={`${name}-icon ${!className ? "" : className}`}
+        className={cn(styles[name], className, {
+          [styles.rotate]: rotate,
+        })}
         fill={color}
         stroke={color}
         width={size}

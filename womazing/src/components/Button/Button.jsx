@@ -29,19 +29,23 @@ const Button = ({
   fill,
   cover,
   color,
+  innerRef,
   className,
   ...props
 }) => {
   return (
     <button
       onClick={onClick}
-      style={color ? `background-color: ${colors[color]}` : null}
-      className={cn([styles.root], className, {
+      //   style={{ marginRight: spacing + "em" }}
+      //   style={color ? {`backgroundColor: ${colors[color]`}} : null}
+      style={color ? { backgroundColor: color } : null}
+      className={cn(styles.root, className, {
         [styles.fill]: fill,
         [styles.cover]: cover,
         [styles.mobile]: type === "mobile",
         [styles.ghost]: type === "ghost",
         [styles.filter]: type === "filter",
+        [styles.filter_active]: type === "filter" && active,
         [styles.pagination]: type === "pagination",
         [styles.size]: type === "size",
         [styles.color]: type === "colors" && color,
@@ -51,8 +55,10 @@ const Button = ({
         [styles.cart_refresh]: type === "cartRefresh",
         [styles.coupon]: type === "coupon",
         [styles.arrow_scroll]: type === "arrow_scroll",
-        active: active,
+        [styles.slider_prev || className]: type === "sliderPrev",
+        [styles.slider_next || className]: type === "sliderNext",
       })}
+      ref={innerRef}
       {...props}
     >
       {children}

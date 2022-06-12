@@ -11,9 +11,9 @@ const Col = ({ children, def, mb, tb, sd, ds, none, className }) => {
       className={cn(className, {
         [styles[`col-${def}`]]: def,
         [styles[`col-mb-${mb}`]]: mb,
-        [styles[`col-mb-${tb}`]]: tb,
-        [styles[`col-mb-${sd}`]]: sd,
-        [styles[`col-mb-${ds}`]]: ds,
+        [styles[`col-tb-${tb}`]]: tb,
+        [styles[`col-sd-${sd}`]]: sd,
+        [styles[`col-ds-${ds}`]]: ds,
         [styles.mb_none]: none === "mb",
         [styles.tb_none]: none === "tb",
         [styles.sd_none]: none === "sd",
@@ -24,7 +24,5 @@ const Col = ({ children, def, mb, tb, sd, ds, none, className }) => {
     </div>
   );
 };
-
-console.log(vars);
 
 export default Col;

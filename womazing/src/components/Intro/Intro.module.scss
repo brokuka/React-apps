@@ -8,8 +8,6 @@
 
 	&::after {
 		content: "";
-
-		// width: 844px;
 		@include adaptiveValue(width, 84.4, 2);
 		height: inherit;
 
@@ -73,22 +71,44 @@
 .slider_text {
 	max-width: 567px;
 	width: 100%;
-	margin-left: 0;
+	margin-left: 0 !important;
+
+	@include smDesktop {
+		margin-left: auto !important;
+	}
 }
 
 .slider_image {
 	max-width: 410px;
 	width: 100%;
-	margin-right: 0;
+	margin-right: 0 !important;
 }
 
 .slider_pagination {
+	display: flex;
 	max-width: 385px;
 	justify-content: flex-end;
 
 	@include smDesktop {
 		justify-content: center;
 		max-width: 100%;
+	}
+}
+
+.bullet {
+	display: inline-block;
+	width: 30px;
+	height: 4px;
+
+	background-color: $color-grey;
+	cursor: pointer;
+
+	&:not(:last-child) {
+		margin-right: 1.2rem;
+	}
+
+	&_active {
+		background-color: $black;
 	}
 }
 

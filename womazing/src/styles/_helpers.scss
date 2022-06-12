@@ -120,20 +120,6 @@ hr {
 	clip: rect(0 0 0 0);
 }
 
-main {
-	@include adaptiveValue(margin-bottom, 13, 8);
-	padding-top: $headerHeight;
-	flex: 1 1 auto;
-
-	&.about,
-	&.shop,
-	&.contacts,
-	&.cart,
-	&.checkout {
-		@include adaptiveValue(padding-top, 19, 15);
-	}
-}
-
 .stretched {
 	flex: 1 1 auto;
 }

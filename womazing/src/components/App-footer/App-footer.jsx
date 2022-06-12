@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Col from "../Col/Col";
 import Container from "../Container/Container";
 import Icon from "../Icon/Icon";
 import Row from "../Row/Row";
+import cn from "classnames";
 
 /* Style */
 import styles from "./App-footer.module.scss";
@@ -15,15 +16,15 @@ const navigation = [
   },
   {
     title: "Магазин",
-    href: "/",
+    href: "/shop",
   },
   {
     title: "О бренде",
-    href: "/",
+    href: "/about",
   },
   {
     title: "Контакты",
-    href: "/",
+    href: "/contacts",
   },
 ];
 
@@ -77,21 +78,27 @@ const AppFooter = () => {
         <Row className={styles.line_1}>
           <Col def="auto">
             <Link className={styles.logo} to="/">
-              <svg className="logo-icon">
-                <use xlinkHref="#icon-logo" />
-              </svg>
+              <Icon name="logo" href="logo" />
               <span>Womazing</span>
             </Link>
           </Col>
 
           <Col def={5} tb={12}>
-            <nav className={styles.nav}>
+            <nav>
               <ul className={styles.nav_list}>
                 {navigation.map((item, index) => (
                   <li key={index}>
-                    <Link to={item.href} key={index}>
+                    <NavLink
+                      className={({ isActive }) =>
+                        cn(styles.nav_link, {
+                          [styles.active]: isActive,
+                        })
+                      }
+                      to={item.href}
+                      key={index}
+                    >
                       {item.title}
-                    </Link>
+                    </NavLink>
                   </li>
                 ))}
               </ul>
@@ -125,7 +132,7 @@ const AppFooter = () => {
             </ul>
           </Col>
 
-          <Col def={4} tb={12}>
+          <Col def={4} tb={12} none="tb">
             <ul className={styles.list_clothes}>
               {clothesList.map((item, index) => (
                 <li key={index}>

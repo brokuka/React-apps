@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "../Container/Container";
-import { Pagination } from "swiper";
+import { Pagination, Controller } from "swiper";
 import Row from "../Row/Row";
 import { SwiperSlide } from "swiper/react";
 import cn from "classnames";
@@ -78,7 +78,14 @@ const imgGroup = [
 ];
 
 const Intro = () => {
-  const [controlledSwiper, setControlledSwiper] = React.useState(null);
+  const paginationRef = React.useRef(null);
+  const swiper1Ref = React.useRef();
+  const swiper2Ref = React.useRef();
+
+  React.useLayoutEffect(() => {
+    swiper1Ref.current.controller.control = swiper2Ref.current;
+    swiper2Ref.current.controller.control = swiper1Ref.current;
+  }, []);
 
   return (
     <div className={styles.root}>
@@ -90,13 +97,16 @@ const Intro = () => {
               spaceBetween={15}
               className={cn(styles.swiper, styles.slider_text)}
               grabCursor
-              modules={[Pagination]}
+              modules={[Pagination, Controller]}
+              onSwiper={(swiper) => (swiper1Ref.current = swiper)}
+              onBeforeInit={(swiper) => {
+                swiper.params.pagination.el = paginationRef.current;
+              }}
               pagination={{
-                el: ".swiper-pagination",
+                el: paginationRef.current,
+                bulletClass: styles.bullet,
+                bulletActiveClass: styles.bullet_active,
                 clickable: true,
-                renderBullet: function (index, className) {
-                  return '<span class="' + className + '"></span>';
-                },
               }}
             >
               {textGroup.map((text, index) => (
@@ -112,17 +122,28 @@ const Intro = () => {
                     <Icon name="arrow-scroll" href="arrow-scroll" />
                   </Button>
                 </Link>
-                <Button fill>
-                  <span>Открыть магазин</span>
-                </Button>
+
+                <Link to="/shop">
+                  <Button fill>
+                    <span>Открыть магазин</span>
+                  </Button>
+                </Link>
               </div>
 
-              <div class={styles.slider_pagination}></div>
+              <div
+                className={styles.slider_pagination}
+                ref={paginationRef}
+              ></div>
             </Slider>
           </Col>
 
           <Col def={5} none="sd">
-            <Slider className={cn(styles.slider_image)} grabCursor>
+            <Slider
+              className={styles.slider_image}
+              grabCursor
+              modules={[Controller]}
+              onSwiper={(swiper) => (swiper2Ref.current = swiper)}
+            >
               {imgGroup.map((img, index) => (
                 <SwiperSlide key={index}>
                   <picture>

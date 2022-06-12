@@ -1,0 +1,33 @@
+@use '../../../../styles/vars' as *;
+@use '../../../../styles/mixins' as *;
+
+.cards {
+	margin-bottom: 6.5rem;
+}
+
+.count {
+	display: inline-block;
+
+	@include text;
+	color: #808080;
+
+	margin-bottom: 6.5rem;
+}
+
+.showed::after {
+	content: " из ";
+	pointer-events: none;
+}
+
+.all::after {
+	content: " товаров";
+	pointer-events: none;
+}
+
+.group {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	@include rowGap(1.4);
+	@include columnGap(1.4);
+}
