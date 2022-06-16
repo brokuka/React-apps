@@ -8,16 +8,17 @@ import styles from "./RelatedProducts.module.scss";
 
 const RelatedProducts = ({ product }) => {
   const [relatedProducts, setRelatedProducts] = React.useState();
+  const [newProduct, setNewProduct] = React.useState();
 
-  const relateProductsPath = product.related?.id
+  const relateProductsPath = product?.related?.id
     .map((id) => `id=${id}`)
     .join("&");
 
-  const getRelatedProducts = async () => {
+  const getRelatedProducts = async (path) => {
     try {
-      if (product.related?.id) {
+      if (newProduct?.related?.id) {
         const { data } = await axios.get(
-          `http://localhost:3005/products/?${relateProductsPath}`
+          `http://localhost:3005/products/?${path}`
         );
         setRelatedProducts(data);
       }
@@ -27,16 +28,21 @@ const RelatedProducts = ({ product }) => {
   };
 
   React.useEffect(() => {
-    getRelatedProducts();
+    setNewProduct(product);
   }, []);
+
+  React.useEffect(() => {
+    if (newProduct !== product) {
+      getRelatedProducts(relateProductsPath);
+    }
+  }, [product]);
 
   return (
     <>
-      {relatedProducts ? (
+      {relateProductsPath ? (
         <div className={styles.root}>
           <h2 className={styles.title}>Связанные товары</h2>
-          {/* <Cards collection={relatedProducts} /> */}
-          <Link to={"/Свитшоты/3"}>232</Link>
+          <Cards collection={relatedProducts} />
         </div>
       ) : null}
     </>

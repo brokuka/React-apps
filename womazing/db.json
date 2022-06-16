@@ -11,10 +11,7 @@
 				"oldPrice": 229
 			},
 			"colors": [
-				"#927876",
-				"#D4D4D4",
-				"#FD9696",
-				"#FDC796"
+				"#927876"
 			],
 			"sizes": [
 				"S",
@@ -24,21 +21,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/3.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/3.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/3",
 				"alt": "Girl"
 			},
 			"related": {
@@ -72,21 +55,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/1.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/1.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/1",
 				"alt": "Girl"
 			},
 			"related": {
@@ -120,21 +89,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/2.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/2.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/2",
 				"alt": "Girl"
 			},
 			"related": {
@@ -168,21 +123,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/1.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/1.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/1",
 				"alt": "Girl"
 			}
 		},
@@ -210,21 +151,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/2.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/2.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/2",
 				"alt": "Girl"
 			}
 		},
@@ -252,21 +179,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/3.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/3.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/3",
 				"alt": "Girl"
 			}
 		},
@@ -294,21 +207,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/3.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/3.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/3",
 				"alt": "Girl"
 			}
 		},
@@ -336,21 +235,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/2.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/2.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/2",
 				"alt": "Girl"
 			}
 		},
@@ -378,21 +263,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/1.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/1.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/1",
 				"alt": "Girl"
 			}
 		},
@@ -420,21 +291,7 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/2.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/2.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/2",
 				"alt": "Girl"
 			},
 			"related": {
@@ -467,27 +324,135 @@
 				"XXL"
 			],
 			"img": {
-				"jpg": {
-					"src": "/images/products/3.jpg"
-				},
-				"webp": {
-					"type": "image/webp",
-					"src": "/images/products/3.webp"
-				},
-				"card": {
-					"width": 350,
-					"height": 478
-				},
-				"single": {
-					"width": 536,
-					"height": 729
-				},
+				"src": "/images/products/3",
 				"alt": "Girl"
 			},
 			"related": {
 				"id": [
 					4,
 					5
+				]
+			}
+		}
+	],
+	"sliders": [
+		{
+			"for": "intro",
+			"texts": [
+				{
+					"title": "Новые поступления в этом сезоне",
+					"subtitle": "Утонченные сочетания и бархатные оттенки - вот то, что вы искали в этом сезоне. Время исследовать."
+				},
+				{
+					"title": "Что-то новенькое. Мы заждались тебя.",
+					"subtitle": "Надоело искать себя в сером городе? Настало время новых идей, свежих красок и вдохновения с Womazing!"
+				},
+				{
+					"title": "Включай новый сезон с WOMAZING",
+					"subtitle": "Мы обновили ассортимент - легендарные коллекции и новинки от отечественных дизайнеров"
+				}
+			],
+			"img": [
+				{
+					"jpg": {
+						"src": "/images/sliders/intro/3.jpg"
+					},
+					"webp": {
+						"src": "/images/sliders/intro/3.webp"
+					},
+					"alt": "Girl"
+				},
+				{
+					"jpg": {
+						"src": "/images/sliders/intro/3.jpg"
+					},
+					"webp": {
+						"src": "/images/sliders/intro/3.webp"
+					},
+					"alt": "Girl"
+				},
+				{
+					"jpg": {
+						"src": "/images/sliders/intro/3.jpg"
+					},
+					"webp": {
+						"src": "/images/sliders/intro/3.webp"
+					},
+					"alt": "Girl"
+				}
+			]
+		},
+		{
+			"for": "dream",
+			"texts": {
+				"title": "Для каждой",
+				"paragraph": [
+					{
+						"text": "Каждая девушка уникальна. Однако, мы схожи в миллионе мелочей."
+					},
+					{
+						"text": "Womazing ищет эти мелочи и создает прекрасные вещи, которые выгодно подчеркивают достоинства каждой девушки."
+					}
+				],
+				"link": "Подробнее о бренде"
+			},
+			"img": [
+				{
+					"jpg": {
+						"src": "/images/sliders/dream/1.jpg"
+					},
+					"webp": {
+						"src": "/images/sliders/dream/1.webp"
+					},
+					"alt": "Girl"
+				},
+				{
+					"jpg": {
+						"src": "/images/sliders/dream/2.jpg"
+					},
+					"webp": {
+						"src": "/images/sliders/dream/2.webp"
+					},
+					"alt": "Girl"
+				},
+				{
+					"jpg": {
+						"src": "/images/sliders/dream/3.jpg"
+					},
+					"webp": {
+						"src": "/images/sliders/dream/3.webp"
+					},
+					"alt": "Girl"
+				}
+			]
+		}
+	],
+	"about": [
+		{
+			"img": {
+				"src": "",
+				"alt": "Girl"
+			},
+			"text": {
+				"title": "Идея и женщина",
+				"paragraph": [
+					{
+						"text": "Womazing была основана в 2010-ом и стала одной из самых успешных компаний нашей страны. Как и многие итальянские фирмы, Womazing остаётся семейной компанией, хотя ни один из членов семьи не является модельером. Мы действуем по успешной формуле, прибегая к услугам известных модельеров для создания своих коллекций. Этот метод был описан критиком моды Колином Макдауэллом как форма дизайнерского со-творчества, характерная для ряда итальянских prêt-a-porter компаний."
+					}
+				]
+			}
+		},
+		{
+			"img": {
+				"src": "",
+				"alt": "Girl"
+			},
+			"text": {
+				"title": "Магия в деталях",
+				"paragraph": [
+					{
+						"text": "Первый магазин Womazing был открыт в маленьком городке на севере страны в 2010-ом году. Первая коллекция состояла из двух пальто и костюма, которые были копиями парижских моделей. Несмотря на то, что по образованию основательница была адвокатом, ее семья всегда была тесно связана с шитьём (прабабушка основательницы шила одежду для женщин, а мать основала профессиональную школу кроя и шитья). Стремление производить одежду для масс несло в себе большие перспективы, особенно в то время, когда высокая мода по-прежнему доминировала, а рынка качественного prêt-a-porter попросту не существовало."
+					}
 				]
 			}
 		}

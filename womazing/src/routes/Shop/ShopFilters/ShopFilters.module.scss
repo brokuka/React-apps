@@ -1,4 +1,4 @@
-@use '../../../../styles/mixins' as *;
+@use '../../../styles/mixins' as *;
 
 .root {
 	@include adaptiveValue(margin-bottom, 9.2, 3.2);

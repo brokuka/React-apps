@@ -1,16 +1,20 @@
 import React from "react";
-import Button from "../../../../components/Button/Button";
+import Button from "../../../components/Button/Button";
 import { useSelector, useDispatch } from "react-redux/es/exports";
-import { setCategoryId } from "../../../../store/slices/filterSlice";
-import { fetchProducts } from "../../../../store/slices/productsSlice";
+import {
+  setCategoryId,
+  setFilteredItems,
+} from "../../../store/slices/filterSlice";
+import { useWhyDidYouUpdate } from "ahooks";
 
 /* Style */
 import styles from "./ShopFilters.module.scss";
+import axios from "axios";
 
 const btnGroup = [
   {
     title: "Все",
-    catIndex: 0,
+    catIndex: null,
   },
   {
     title: "Пальто",
@@ -31,24 +35,32 @@ const btnGroup = [
 ];
 
 const ShopFilters = () => {
-  const { categoryId } = useSelector((state) => state.filter);
+  const products = useSelector((state) => state.products);
+  const filter = useSelector((state) => state.filter);
   const dispatch = useDispatch();
+  useWhyDidYouUpdate("ShopFilters", {});
 
-  const onClickCategory = React.useCallback((id) => {
-    dispatch(setCategoryId(id));
-  });
+  const onSetFilteredItems = React.useCallback(() => {
+    if (filter.categoryId) {
+      const filtered = products.items.filter(
+        (item) => item.categoryId === filter.categoryId
+      );
 
-  const onFetchProducts = () => {
-    if (categoryId > 0) {
-      dispatch(fetchProducts(`?categoryId=${categoryId}`));
+      dispatch(setFilteredItems(filtered));
     } else {
-      dispatch(fetchProducts());
+      dispatch(setFilteredItems(products.items));
     }
-  };
+  }, [filter.categoryId, dispatch, products.items]);
 
   React.useEffect(() => {
-    onFetchProducts();
-  }, [categoryId]);
+    onSetFilteredItems();
+  }, [onSetFilteredItems]);
+
+  console.log(filter.categoryId);
+
+  const onClickCategory = (id) => {
+    dispatch(setCategoryId(id));
+  };
 
   return (
     <div className={styles.root}>
@@ -58,7 +70,7 @@ const ShopFilters = () => {
             onClick={() => onClickCategory(catIndex)}
             type="filter"
             key={catIndex}
-            active={catIndex === categoryId}
+            active={catIndex === filter.categoryId}
           >
             {title}
           </Button>

@@ -5,37 +5,22 @@ import Cards from "../../../Cards/Cards";
 import Button from "../../../Button/Button";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import axios from "axios";
+import { filterProducts } from "../../../../store/slices/productsSlice";
 
 /* Style */
 import styles from "./NewCollection.module.scss";
 
 const NewCollection = ({ root, title }) => {
-  const [products, setProducts] = React.useState();
-
-  const getProducts = async () => {
-    try {
-      const { data } = await axios.get(
-        `http://localhost:3005/products/?newCollection=true`
-      );
-      setProducts(data);
-    } catch (error) {
-      console.log("Произошла ошибка при загрузке товаров из новой коллекции");
-    }
-
-    window.scrollTo(0, 0);
-  };
-
-  React.useEffect(() => {
-    getProducts();
-  }, []);
+  const { items } = useSelector((state) => state.products);
+  const filtered = items?.filter((item) => item.newCollection);
 
   return (
     <>
-      {products ? (
+      {filtered ? (
         <section className={root} id="new_collection">
           <Container>
             <h2 className={title}>Новая коллекция</h2>
-            <Cards collection={products} />
+            <Cards collection={filtered} />
 
             <div className={styles.button}>
               <Link to="/shop">

@@ -6,8 +6,17 @@ import { ReactComponent as Sprites } from "./components/Icon/sprites.svg";
 import Home from "./routes/Home/Home";
 import Shop from "./routes/Shop/Shop";
 import Product from "./routes/Product/Product";
+import About from "./routes/About/About";
+import { useDispatch } from "react-redux/es/exports";
+import { fetchProducts } from "./store/slices/productsSlice";
 
-const App = () => {
+const App = React.memo(() => {
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
   return (
     <>
       <Sprites />
@@ -16,13 +25,13 @@ const App = () => {
           <Route index element={<Home />} />
           <Route path={AppRoute.SHOP} element={<Shop />} />
           <Route path={AppRoute.PRODUCT} element={<Product />} />
-          <Route path={AppRoute.ABOUT} element={<Shop />} />
+          <Route path={AppRoute.ABOUT} element={<About />} />
           <Route path={AppRoute.CONTACTS} element={<Shop />} />
           <Route path={AppRoute.CART} element={<Shop />} />
         </Route>
       </Routes>
     </>
   );
-};
+});
 
 export default App;

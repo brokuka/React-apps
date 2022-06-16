@@ -4,7 +4,7 @@ import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 
 const ShopHeader = () => {
   return (
-    <Breadcrumbs>
+    <Breadcrumbs title="Магазин">
       <Breadcrumb title="Магазин" href="/shop" />
     </Breadcrumbs>
   );

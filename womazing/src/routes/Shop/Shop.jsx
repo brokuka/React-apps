@@ -1,17 +1,22 @@
 import React from "react";
 import Main from "../../components/Main/Main";
 import ShopHeader from "./ShopHeader";
-import ShopContent from "./ShopContent/ShopContent";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { fetchProducts } from "../../store/slices/productsSlice";
+import ShopFilters from "./ShopFilters/ShopFilters";
+import ShopCatalog from "./ShopCatalog/ShopCatalog";
 
 const Shop = () => {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
+  const { items } = useSelector((state) => state.products);
   return (
     <Main block header>
       <ShopHeader />
-      <ShopContent />
+      {items ? (
+        <>
+          <ShopFilters />
+          <ShopCatalog />
+        </>
+      ) : null}
     </Main>
   );
 };

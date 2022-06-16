@@ -19,15 +19,19 @@ const Product = () => {
   const { id } = useParams();
 
   const getProduct = async () => {
-    const { data } = await axios.get(`http://localhost:3005/products/${id}`);
-    setProduct(data);
+    try {
+      const { data } = await axios.get(`http://localhost:3005/products/${id}`);
+      setProduct(data);
 
-    window.scrollTo(0, 0);
+      window.scrollTo(0, 0);
+    } catch (error) {
+      console.log("Произошла ошибка при загрузке товара");
+    }
   };
 
   React.useEffect(() => {
     getProduct();
-  }, []);
+  }, [id]);
 
   return (
     <Main block>
@@ -41,20 +45,21 @@ const Product = () => {
             )}
             <Breadcrumb title={product.title} href={2} />
           </Breadcrumbs>
+
           <div className={styles.root}>
             <Row className={styles.content}>
               <Col def={6} sd={6} mb={8}>
                 <picture>
                   <source
-                    srcSet={`${product.img.webp.src}`}
-                    type={product.img.webp.type}
+                    srcSet={`${product.img.src}.webp`}
+                    type="image/webp"
                   />
                   <img
                     className="img"
-                    src={product.img.jpg.src}
+                    src={`${product.img.src}.jpg`}
                     alt={product.img.alt}
-                    width={product.img.single.width}
-                    height={product.img.single.height}
+                    width={536}
+                    height={729}
                   />
                 </picture>
               </Col>

@@ -8,22 +8,20 @@ import cn from "classnames";
 import styles from "./Card.module.scss";
 
 const Cards = ({ collection, children, className }) => {
-  const View = () => {};
-
   return (
     <div className={cn(styles.root, className)}>
       {collection ? (
         collection.map((item, index) => (
-          <CardItem link href={`/${item.category}/${item.id}`} key={index}>
+          <CardItem link href={`/shop/${item.category}/${item.id}`} key={index}>
             <div className={styles.header}>
               <picture>
-                <source srcSet={item.img.webp.src} type={item.img.webp.type} />
+                <source srcSet={`${item.img.src}.webp`} type="image/webp" />
                 <img
                   className="img"
-                  src={item.img.jpg.src}
+                  src={`${item.img.src}.jpg`}
                   alt={item.img.alt}
-                  width={item.img.card.width}
-                  height={item.img.card.height}
+                  width={350}
+                  height={478}
                 />
               </picture>
               <Icon name="card-arrow" href="card-arrow" />
