@@ -429,8 +429,9 @@
 	],
 	"about": [
 		{
+			"reverse": false,
 			"img": {
-				"src": "",
+				"src": "/images/about/1",
 				"alt": "Girl"
 			},
 			"text": {
@@ -443,8 +444,9 @@
 			}
 		},
 		{
+			"reverse": true,
 			"img": {
-				"src": "",
+				"src": "/images/about/2",
 				"alt": "Girl"
 			},
 			"text": {

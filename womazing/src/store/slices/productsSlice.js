@@ -13,16 +13,30 @@ export const fetchProducts = createAsyncThunk(
 
 const initialState = {
   items: null,
+  categoryId: null,
+  current: {
+    product: null,
+    related: null,
+  },
   status: "loading",
 };
 
 export const productsSlice = createSlice({
   name: "products",
   initialState,
+  reducers: {
+    setProduct(state, action) {
+      state.current.product = action.payload.item;
+      state.current.related = action.payload.related;
+    },
+    setCategory(state, action) {
+      state.categoryId = action.payload;
+    },
+  },
   extraReducers: {
     [fetchProducts.pending]: (state) => {
       state.status = "loading";
-      state.items = [];
+      state.items = null;
     },
     [fetchProducts.fulfilled]: (state, action) => {
       state.items = action.payload;
@@ -35,5 +49,5 @@ export const productsSlice = createSlice({
   },
 });
 
-export const {} = productsSlice.actions;
+export const { setProduct, setRelated, setCategory } = productsSlice.actions;
 export default productsSlice;

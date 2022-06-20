@@ -7,39 +7,52 @@ import { useSelector } from "react-redux/es/exports";
 import styles from "./ShopCatalog.module.scss";
 
 const ShopCatalog = () => {
-  const products = useSelector((state) => state.products);
-  const filter = useSelector((state) => state.filter);
+  const { items } = useSelector((state) => state.products);
+  const { categoryId } = useSelector((state) => state.filter);
+
+  const filteredItems = items.filter((item) => item.categoryId === categoryId);
+
+  const View = () => {
+    const count = (arr) => (
+      <span className={styles.count}>
+        Показано:
+        <span className={styles.showed}>{arr.length}</span>
+        <span className={styles.all}>{arr.length}</span>
+      </span>
+    );
+
+    return (
+      <>
+        {categoryId ? (
+          <>
+            {count(filteredItems)}
+
+            <Cards collection={filteredItems} className={styles.cards} />
+
+            {count(filteredItems)}
+          </>
+        ) : (
+          <>
+            {count(items)}
+
+            <Cards collection={items} className={styles.cards} />
+
+            {count(items)}
+          </>
+        )}
+      </>
+    );
+  };
 
   return (
-    <>
-      {filter.items ? (
-        <div className={styles.root}>
-          <>
-            <span className={styles.count}>
-              Показано:{" "}
-              <span className={styles.showed}>{filter.items.length}</span>
-              <span className={styles.all}>{filter.items.length}</span>
-            </span>
+    <div className={styles.root}>
+      <View />
 
-            {filter.items ? (
-              <Cards collection={filter.items} className={styles.cards} />
-            ) : (
-              <Cards collection={products.items} className={styles.cards} />
-            )}
-
-            <span className={styles.count}>
-              Показано:{" "}
-              <span className={styles.showed}>{filter.items.length}</span>
-              <span className={styles.all}>{filter.items.length}</span>
-            </span>
-            <div className={styles.group}>
-              <Button type="pagination">1</Button>
-              <Button type="pagination">2</Button>
-            </div>
-          </>
-        </div>
-      ) : null}
-    </>
+      <div className={styles.group}>
+        <Button type="pagination">1</Button>
+        <Button type="pagination">2</Button>
+      </div>
+    </div>
   );
 };
 

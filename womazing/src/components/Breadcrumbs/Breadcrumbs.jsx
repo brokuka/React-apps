@@ -1,7 +1,6 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Breadcrumb from "./Breadcrumb";
-import cn from "classnames";
 
 /* Style */
 import styles from "./Breadcrumbs.module.scss";

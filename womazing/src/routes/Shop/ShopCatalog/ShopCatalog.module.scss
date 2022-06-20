@@ -14,9 +14,13 @@
 	margin-bottom: 6.5rem;
 }
 
-.showed::after {
-	content: " из ";
-	pointer-events: none;
+.showed {
+	margin-left: 5px;
+
+	&::after {
+		content: " из ";
+		pointer-events: none;
+	}
 }
 
 .all::after {

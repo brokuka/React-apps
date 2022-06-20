@@ -7,31 +7,29 @@ import axios from "axios";
 import Button from "../../components/Button/Button";
 import Row from "./../../components/Row/Row";
 import Col from "./../../components/Col/Col";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
+import { setProduct, setRelated } from "../../store/slices/productsSlice";
 
 /* Style */
 import styles from "./Product.module.scss";
 
 const Product = () => {
-  const [product, setProduct] = React.useState();
+  const dispatch = useDispatch();
+  const { items, current } = useSelector((state) => state.products);
   const { categoryId } = useSelector((state) => state.filter);
+  const { product } = current;
   const { id } = useParams();
 
-  const getProduct = async () => {
-    try {
-      const { data } = await axios.get(`http://localhost:3005/products/${id}`);
-      setProduct(data);
-
-      window.scrollTo(0, 0);
-    } catch (error) {
-      console.log("Произошла ошибка при загрузке товара");
-    }
-  };
-
   React.useEffect(() => {
-    getProduct();
-  }, [id]);
+    const getProduct = items?.find((item) => item.id === +id);
+    const getProductRelates = items?.filter((item) =>
+      getProduct?.related?.id.includes(item.id)
+    );
+
+    dispatch(setProduct({ item: getProduct, related: getProductRelates }));
+    window.scrollTo(0, 0);
+  }, [items, id, dispatch]);
 
   return (
     <Main block>
@@ -105,7 +103,7 @@ const Product = () => {
             </Row>
           </div>
 
-          <RelatedProducts product={product} />
+          <RelatedProducts />
         </>
       ) : (
         "Продукт не найден"

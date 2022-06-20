@@ -3,7 +3,6 @@ import cn from "classnames";
 
 /* Styles */
 import styles from "./Col.module.scss";
-import vars from "../../styles/_vars.scss";
 
 const Col = ({ children, def, mb, tb, sd, ds, none, className }) => {
   return (
