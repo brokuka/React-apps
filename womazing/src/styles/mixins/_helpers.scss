@@ -26,56 +26,25 @@
 @mixin adaptiveValue($property, $startSize, $minSize, $rem: 1, $type: 1) {
 
 	@if $rem ==1 {
-		$addSize: strip-unit(remToPx($startSize - $minSize, 2));
+		// $addSize: getPxFromUnit($startSize - $minSize, $unit);
+		$addSize: remToPx($startSize - $minSize, 0);
 
-		@if $type==1 {
-			/* Если меньше контейнера */
-			#{$property}: remToPx($startSize);
+		/* Если меньше контейнера */
+		#{$property}: remToPx($startSize);
 
-			@media (max-width: #{$maxWidthContainer + px}) {
-				#{$property}: calc(#{remToPx($minSize)} + #{$addSize} *((100vw - 320px) / #{$maxWidthContainer - 320}));
-			}
-		}
-
-		@else if $type==2 {
-			/* Если больше контейнера */
-			#{$property}: $startSize + px;
-
-			@media (min-width: #{$maxWidthContainer + px}) {
-				#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
-			}
-		}
-
-		@else {
-			/* Всегда */
-			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
+		@media (max-width: #{$maxWidthContainer + px}) {
+			#{$property}: calc(#{remToPx($minSize)} + #{$addSize} *((100vw - 320px) / #{$maxWidthContainer - 320}));
 		}
 	}
 
 	@else {
 		$addSize: $startSize - $minSize;
 
-		@if $type==1 {
-			/* Если меньше контейнера */
-			#{$property}: $startSize + px;
+		/* Если меньше контейнера */
+		#{$property}: $startSize + px;
 
-			@media (max-width: #{$maxWidthContainer + px}) {
-				#{$property}: calc(#{$minSize + px} + #{$addSize} *((100vw - 320px) / #{$maxWidthContainer - 320}));
-			}
-		}
-
-		@else if $type==2 {
-			/* Если больше контейнера */
-			#{$property}: $startSize + px;
-
-			@media (min-width: #{$maxWidthContainer + px}) {
-				#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
-			}
-		}
-
-		@else {
-			/* Всегда */
-			#{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$container - 320}));
+		@media (max-width: #{$maxWidthContainer + px}) {
+			#{$property}: calc(#{$minSize + px} + #{$addSize} *((100vw - 320px) / #{$maxWidthContainer - 320}));
 		}
 	}
 }

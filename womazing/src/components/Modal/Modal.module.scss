@@ -1,0 +1,86 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 503px;
+
+	// @include animationEase;
+	position: fixed;
+	inset: 0;
+	z-index: 9999;
+
+	background-color: rgba($color-primary, .95);
+	// cursor: pointer;
+
+	@include tablet {
+		padding: 0 1.5rem;
+	}
+}
+
+.enter {
+	opacity: 0;
+}
+
+.enterActive {
+	opacity: 1;
+	transition: opacity 200ms;
+}
+
+.exit {
+	opacity: 1;
+}
+
+.exitActive {
+	opacity: 0;
+	transition: opacity 200ms;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	@include rowGap(3.5);
+	width: 491px;
+
+	@include adaptiveValue(padding, 7, 3);
+	background-color: $white;
+
+	text-align: center;
+	position: relative;
+	cursor: auto;
+}
+
+.close {
+	position: absolute;
+	top: 32px;
+	right: 32px;
+	@include adaptiveValue(right, 3.2, 2.7);
+}
+
+.title {
+	@include text-h3;
+	color: $black;
+}
+
+.modal_input {
+	@include animationEase;
+	@include text;
+	@include adaptiveValue(padding-bottom, 1.6, 1);
+	width: 100%;
+
+	border: none;
+	border-bottom: 1px solid #868686;
+
+	outline: none;
+
+	&:focus {
+		border-color: $black;
+	}
+
+	&::placeholder {
+		@include text;
+		color: #868686;
+	}
+}

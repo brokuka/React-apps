@@ -5,20 +5,13 @@ import PropTypes from "prop-types";
 /* Style */
 import styles from "./Button.module.scss";
 
-const colors = [
-  {
-    bazaar: "#927876",
-  },
-  {
-    lightGray: "#D4D4D4",
-  },
-  {
-    americanPink: "#FD9696",
-  },
-  {
-    peachOrange: "#FDC796",
-  },
-];
+/**
+ *
+ * @param {{
+ * type: "mobile" | "ghost" | "filter" | "pagination" | "size" | "colors" | "count" | "cartCount" | "cartItemRemove" | "coupon" | "arrow_scroll" | "sliderPrev" | "sliderNext";
+ * }}
+ *
+ */
 
 const Button = ({
   active,
@@ -31,14 +24,16 @@ const Button = ({
   color,
   innerRef,
   className,
+  maxWidth,
   ...props
 }) => {
   return (
     <button
       onClick={onClick}
-      //   style={{ marginRight: spacing + "em" }}
-      //   style={color ? {`backgroundColor: ${colors[color]`}} : null}
-      style={color ? { backgroundColor: color } : null}
+      style={{
+        maxWidth: maxWidth,
+        backgroundColor: color,
+      }}
       className={cn(styles.root, className, {
         [styles.fill]: fill,
         [styles.cover]: cover,

@@ -12,7 +12,7 @@ html {
 body {
 	font-family: $defaultFont;
 	font-weight: $defaultFontWeight;
-	font-size: $defaultFontSize;
+	font-size: rem($defaultFontSize);
 }
 
 #page {

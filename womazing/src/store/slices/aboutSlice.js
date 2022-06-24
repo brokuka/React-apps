@@ -9,16 +9,13 @@ export const fetchAbout = createAsyncThunk("about/fetchAbout", async () => {
 
 const initialState = {
   items: null,
+  status: "loading",
 };
 
 export const aboutSlice = createSlice({
   name: "about",
   initialState,
   extraReducers: {
-    [fetchAbout.pending]: (state) => {
-      state.status = "loading";
-      state.items = null;
-    },
     [fetchAbout.fulfilled]: (state, action) => {
       state.items = action.payload;
       state.status = "success";

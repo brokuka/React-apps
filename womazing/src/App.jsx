@@ -7,15 +7,17 @@ import Home from "./routes/Home/Home";
 import Shop from "./routes/Shop/Shop";
 import Product from "./routes/Product/Product";
 import About from "./routes/About/About";
+import Contacts from "./routes/Contacts/Contacts";
 import { useDispatch } from "react-redux/es/exports";
 import { fetchProducts } from "./store/slices/productsSlice";
+import { fetchAbout } from "./store/slices/aboutSlice";
 
 const App = React.memo(() => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
     dispatch(fetchProducts());
+    dispatch(fetchAbout());
   }, [dispatch]);
 
   return (
@@ -27,7 +29,7 @@ const App = React.memo(() => {
           <Route path={AppRoute.SHOP} element={<Shop />} />
           <Route path={AppRoute.PRODUCT} element={<Product />} />
           <Route path={AppRoute.ABOUT} element={<About />} />
-          <Route path={AppRoute.CONTACTS} element={<Shop />} />
+          <Route path={AppRoute.CONTACTS} element={<Contacts />} />
           <Route path={AppRoute.CART} element={<Shop />} />
         </Route>
       </Routes>

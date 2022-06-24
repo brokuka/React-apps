@@ -7,7 +7,6 @@
 	vertical-align: top;
 
 	padding: 0;
-	height: 100%;
 	cursor: pointer;
 
 	background: none;
@@ -69,9 +68,10 @@
 }
 
 .filter {
-	padding: 1.117647058823529em 3.823529411764706em;
+	padding: 1.1176470588em 3.8235294118em;
 
-	@include text;
+
+	@include text(0);
 	color: $black;
 
 	border: 1px solid $black;
