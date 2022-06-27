@@ -28,18 +28,16 @@ const cardGroup = [
 const ImportantToUs = ({ root, title }) => {
   return (
     <section className={root} id="important_to_us">
-      <Container>
-        <h2 className={title}>Что для нас важно</h2>
-        <Cards>
-          {cardGroup.map((card, index) => (
-            <CardItem key={index}>
-              <div className={styles.icon}>{card.icon}</div>
-              <div className={styles.title}>{card.title}</div>
-              <div className={styles.text}>{card.text}</div>
-            </CardItem>
-          ))}
-        </Cards>
-      </Container>
+      <h2 className={title}>Что для нас важно</h2>
+      <Cards>
+        {cardGroup.map((card, index) => (
+          <CardItem key={index}>
+            <div className={styles.icon}>{card.icon}</div>
+            <div className={styles.title}>{card.title}</div>
+            <div className={styles.text}>{card.text}</div>
+          </CardItem>
+        ))}
+      </Cards>
     </section>
   );
 };

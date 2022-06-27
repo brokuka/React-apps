@@ -1,10 +1,10 @@
 import React from "react";
 import cn from "classnames";
 import { PropTypes } from "prop-types";
+import Container from "../Container/Container";
 
 /* Style */
 import styles from "./Main.module.scss";
-import Container from "../Container/Container";
 
 const Main = ({ children, block, root, header }) => {
   const headerBlock = React.Children.toArray(children)[0];

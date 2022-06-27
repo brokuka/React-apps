@@ -5,6 +5,7 @@
 	@include adaptiveValue(margin-bottom, 13, 8);
 	padding-top: $headerHeight;
 	flex: 1 1 auto;
+	overflow: hidden;
 }
 
 .block {

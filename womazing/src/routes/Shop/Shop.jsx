@@ -8,6 +8,11 @@ import ShopCatalog from "./ShopCatalog/ShopCatalog";
 
 const Shop = () => {
   const { items } = useSelector((state) => state.products);
+
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Main block header>
       <ShopHeader />

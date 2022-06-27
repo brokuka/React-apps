@@ -30,10 +30,6 @@
 
 	position: relative;
 
-	@include tablet {
-		flex-direction: column;
-		justify-content: center;
-	}
 }
 
 .logo {
@@ -58,6 +54,7 @@
 	align-items: center;
 
 	@include tablet {
+		display: none;
 		margin-bottom: 1rem;
 	}
 }
@@ -95,7 +92,6 @@
 .items_group {
 	display: flex;
 	align-items: center;
-	@include adaptiveValue(margin-right, 6.7, 3);
 
 	span {
 		margin-left: .9rem;
@@ -112,4 +108,12 @@
 	span:hover {
 		text-decoration: underline;
 	}
+
+	@include smDesktop {
+		display: none;
+	}
+}
+
+.cart {
+	@include adaptiveValue(margin-left, 6.7, 3);
 }

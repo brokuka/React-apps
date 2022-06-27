@@ -1,0 +1,23 @@
+@use '../../../../styles/vars' as *;
+@use '../../../../styles/mixins' as *;
+
+.root {
+	@include animationEase;
+	@include text;
+	@include adaptiveValue(padding-bottom, 1.6, 1);
+	width: 100%;
+
+	border: none;
+	border-bottom: 1px solid #868686;
+
+	outline: none;
+
+	&:focus {
+		border-color: $black;
+	}
+
+	&::placeholder {
+		@include text;
+		color: #868686;
+	}
+}

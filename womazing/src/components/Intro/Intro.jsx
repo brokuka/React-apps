@@ -89,82 +89,77 @@ const Intro = () => {
 
   return (
     <div className={styles.root}>
-      <Container>
-        <Row className={styles.slider} wrap>
-          <Col def={7} sd={12}>
-            <Slider
-              slidesPerView={1}
-              spaceBetween={15}
-              className={cn(styles.swiper, styles.slider_text)}
-              grabCursor
-              modules={[Pagination, Controller]}
-              onSwiper={(swiper) => (swiper1Ref.current = swiper)}
-              onBeforeInit={(swiper) => {
-                swiper.params.pagination.el = paginationRef.current;
-              }}
-              pagination={{
-                el: paginationRef.current,
-                bulletClass: styles.bullet,
-                bulletActiveClass: styles.bullet_active,
-                clickable: true,
-              }}
-            >
-              {textGroup.map((text, index) => (
-                <SwiperSlide key={index}>
-                  <h3 className={styles.title}>{text.title}</h3>
-                  <h3 className={styles.subtitle}>{text.subtitle}</h3>
-                </SwiperSlide>
-              ))}
+      <Row className={styles.slider} wrap>
+        <Col def={6} sd={12}>
+          <Slider
+            slidesPerView={1}
+            spaceBetween={15}
+            className={cn(styles.swiper, styles.slider_text)}
+            grabCursor
+            modules={[Pagination, Controller]}
+            onSwiper={(swiper) => (swiper1Ref.current = swiper)}
+            onBeforeInit={(swiper) => {
+              swiper.params.pagination.el = paginationRef.current;
+            }}
+            pagination={{
+              el: paginationRef.current,
+              bulletClass: styles.bullet,
+              bulletActiveClass: styles.bullet_active,
+              clickable: true,
+            }}
+          >
+            {textGroup.map((text, index) => (
+              <SwiperSlide key={index}>
+                <h3 className={styles.title}>{text.title}</h3>
+                <h3 className={styles.subtitle}>{text.subtitle}</h3>
+              </SwiperSlide>
+            ))}
 
-              <div className={styles.btn_group}>
-                <Link to="/">
-                  <Button type="arrow_scroll">
-                    <Icon name="arrow-scroll" href="arrow-scroll" />
-                  </Button>
-                </Link>
+            <div className={styles.btn_group}>
+              <Link to="/">
+                <Button type="arrow_scroll">
+                  <Icon name="arrow-scroll" href="arrow-scroll" />
+                </Button>
+              </Link>
 
-                <Link to="/shop">
-                  <Button fill>
-                    <span>Открыть магазин</span>
-                  </Button>
-                </Link>
-              </div>
+              <Link to="/shop">
+                <Button fill height="100%">
+                  <span>Открыть магазин</span>
+                </Button>
+              </Link>
+            </div>
 
-              <div
-                className={styles.slider_pagination}
-                ref={paginationRef}
-              ></div>
-            </Slider>
-          </Col>
+            <div className={styles.slider_pagination} ref={paginationRef}></div>
+          </Slider>
+        </Col>
 
-          <Col def={5} none="sd">
-            <Slider
-              className={styles.slider_image}
-              grabCursor
-              modules={[Controller]}
-              onSwiper={(swiper) => (swiper2Ref.current = swiper)}
-            >
-              {imgGroup.map((img, index) => (
-                <SwiperSlide key={index}>
-                  <picture>
-                    <source
-                      srcSet={img.format.webp.src}
-                      type={img.format.webp.type}
-                    />
-                    <img
-                      className={cn("img", styles.img)}
-                      src={img.format.jpg.src}
-                      alt={img.alt}
-                      width={img.width}
-                      height={img.height}
-                    />
-                  </picture>
-                </SwiperSlide>
-              ))}
-            </Slider>
-          </Col>
-        </Row>
-      </Container>
+        <Col def="auto" none="sd" className={styles.second}>
+          <Slider
+            className={styles.slider_image}
+            grabCursor
+            modules={[Controller]}
+            onSwiper={(swiper) => (swiper2Ref.current = swiper)}
+          >
+            {imgGroup.map((img, index) => (
+              <SwiperSlide key={index}>
+                <picture>
+                  <source
+                    srcSet={img.format.webp.src}
+                    type={img.format.webp.type}
+                  />
+                  <img
+                    className={cn("img", styles.img)}
+                    src={img.format.jpg.src}
+                    alt={img.alt}
+                    width={img.width}
+                    height={img.height}
+                  />
+                </picture>
+              </SwiperSlide>
+            ))}
+          </Slider>
+        </Col>
+      </Row>
     </div>
   );
 };

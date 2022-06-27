@@ -5,14 +5,6 @@ import PropTypes from "prop-types";
 /* Style */
 import styles from "./Button.module.scss";
 
-/**
- *
- * @param {{
- * type: "mobile" | "ghost" | "filter" | "pagination" | "size" | "colors" | "count" | "cartCount" | "cartItemRemove" | "coupon" | "arrow_scroll" | "sliderPrev" | "sliderNext";
- * }}
- *
- */
-
 const Button = ({
   active,
   onClick,
@@ -25,14 +17,22 @@ const Button = ({
   innerRef,
   className,
   maxWidth,
+  height,
+  disabled,
+  submit,
   ...props
 }) => {
+  const onSubmit = async (e) => {
+    await e;
+  };
+
   return (
     <button
       onClick={onClick}
       style={{
         maxWidth: maxWidth,
         backgroundColor: color,
+        height: height,
       }}
       className={cn(styles.root, className, {
         [styles.fill]: fill,
@@ -52,9 +52,12 @@ const Button = ({
         [styles.arrow_scroll]: type === "arrow_scroll",
         [styles.slider_prev || className]: type === "sliderPrev",
         [styles.slider_next || className]: type === "sliderNext",
+        [styles.disabled]: disabled,
       })}
       ref={innerRef}
+      disabled={disabled}
       {...props}
+      onSubmit={onSubmit}
     >
       {children}
     </button>
@@ -63,7 +66,7 @@ const Button = ({
 
 Button.propTypes = {
   active: PropTypes.bool,
-  onClick: PropTypes.func,
+  //   onClick: PropTypes.oneOfType(PropTypes.func, PropTypes.func),
   type: PropTypes.string,
   color: PropTypes.string,
   fill: PropTypes.bool,

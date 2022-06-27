@@ -18,18 +18,16 @@ const NewCollection = ({ root, title }) => {
     <>
       {filtered ? (
         <section className={root} id="new_collection">
-          <Container>
-            <h2 className={title}>Новая коллекция</h2>
-            <Cards collection={filtered} />
+          <h2 className={title}>Новая коллекция</h2>
+          <Cards collection={filtered} />
 
-            <div className={styles.button}>
-              <Link to="/shop">
-                <Button fill type="ghost">
-                  Открыть магазин
-                </Button>
-              </Link>
-            </div>
-          </Container>
+          <div className={styles.button}>
+            <Link to="/shop">
+              <Button fill type="ghost">
+                Открыть магазин
+              </Button>
+            </Link>
+          </div>
         </section>
       ) : null}
     </>

@@ -2,46 +2,30 @@
 @use '../../styles/mixins' as *;
 
 .root {
-	height: 826px;
+	height: 746px;
 	margin-bottom: 14rem;
-	@include adaptiveValue(padding-top, 4, 0);
+	position: relative;
 
-	&::after {
-		content: "";
-		@include adaptiveValue(width, 84.4, 2);
-		height: inherit;
-
-		position: absolute;
-		top: 0;
-		right: -80px;
-		z-index: -1;
-
-		transform: translateX(-80px);
-
-		background-color: $color-ecru-white;
-
-		@include smDesktop {
-			display: none;
-		}
-	}
+	// @include smDesktop {
+	// 	display: flex;
+	// 	justify-content: center;
+	// 	height: 65vh;
+	// 	flex-direction: column;
+	// }
 
 	@include smDesktop {
-		display: flex;
-		align-items: center;
-		height: 100vh;
-	}
-
-	@include tablet {
-		margin-bottom: 0;
+		height: max-content;
 	}
 }
 
 .slider {
+	// @include columnGap(9.3);
 	justify-content: space-between;
 	align-items: center;
 
 	@include smDesktop {
 		justify-content: center;
+		height: calc(100vh - 90px);
 	}
 }
 
@@ -61,6 +45,31 @@
 .seconds_col {
 	@include smDesktop {
 		display: none;
+	}
+}
+
+.second {
+	position: relative;
+
+	&::after {
+		content: "";
+		// @include adaptiveValue(width, 84.4, 2);
+		width: 50vw;
+		height: 826px;
+
+		position: absolute;
+		top: -80px;
+		left: 41.3px;
+		// @include adaptiveValue(left, 9.7, 11.2);
+		z-index: -1;
+
+		transform: translateX(-80px);
+
+		background-color: $color-ecru-white;
+
+		@include smDesktop {
+			display: none;
+		}
 	}
 }
 

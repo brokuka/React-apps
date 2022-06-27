@@ -45,7 +45,7 @@
 
 	background-color: $color-primary;
 
-	&:hover {
+	&:hover:not(:disabled) {
 		background-color: $color-primary-light;
 	}
 }
@@ -60,7 +60,7 @@
 
 	color: $color-primary;
 
-	&:hover {
+	&:hover:not(:disabled) {
 		background-color: $color-primary;
 
 		color: $white;
@@ -76,7 +76,7 @@
 
 	border: 1px solid $black;
 
-	&:hover {
+	&:hover:not(:disabled) {
 		background-color: $black;
 		color: $white;
 	}
@@ -85,6 +85,12 @@
 		background-color: $black;
 		color: $white;
 	}
+}
+
+.disabled {
+	background-color: #cfd8dc;
+	cursor: default;
+	color: $white;
 }
 
 .pagination {

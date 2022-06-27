@@ -3,17 +3,21 @@
 
 .root {
 	display: flex;
-	justify-content: center;
+	// justify-content: center;
+	// justify-content: flex-start;
+	// margin: auto;
 	align-items: center;
 	min-height: 503px;
+	padding: 1rem 0;
 
 	// @include animationEase;
 	position: fixed;
 	inset: 0;
 	z-index: 9999;
+	overflow-y: auto;
 
 	background-color: rgba($color-primary, .95);
-	// cursor: pointer;
+	cursor: pointer;
 
 	@include tablet {
 		padding: 0 1.5rem;
@@ -50,6 +54,7 @@
 	text-align: center;
 	position: relative;
 	cursor: auto;
+	margin: auto;
 }
 
 .close {
