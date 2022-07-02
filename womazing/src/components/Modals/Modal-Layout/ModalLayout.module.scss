@@ -1,5 +1,5 @@
-@use '../../styles/vars' as *;
-@use '../../styles/mixins' as *;
+@use '../../../styles/vars' as *;
+@use '../../../styles/mixins' as *;
 
 .root {
 	display: flex;
@@ -43,9 +43,6 @@
 }
 
 .content {
-	display: flex;
-	flex-direction: column;
-	@include rowGap(3.5);
 	width: 491px;
 
 	@include adaptiveValue(padding, 7, 3);
@@ -65,6 +62,8 @@
 }
 
 .title {
+	margin-bottom: 3.5rem;
+
 	@include text-h3;
 	color: $black;
 }

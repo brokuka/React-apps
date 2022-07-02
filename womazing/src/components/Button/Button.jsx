@@ -5,6 +5,14 @@ import PropTypes from "prop-types";
 /* Style */
 import styles from "./Button.module.scss";
 
+/**
+ *
+ * @param {{
+ * type: "mobile" | "ghost" | "filter" | "pagination" | "size" | "colors" | "count" | "cartCount" | "cartItemRemove" | "cartRefresh" | "coupon" | "arrow_scroll" | "sliderPrev" | "sliderNext";
+ * }}
+ *
+ */
+
 const Button = ({
   active,
   onClick,
@@ -16,6 +24,7 @@ const Button = ({
   color,
   innerRef,
   className,
+  fullWidth,
   maxWidth,
   height,
   disabled,
@@ -33,6 +42,7 @@ const Button = ({
         maxWidth: maxWidth,
         backgroundColor: color,
         height: height,
+        width: fullWidth ? "100%" : null,
       }}
       className={cn(styles.root, className, {
         [styles.fill]: fill,

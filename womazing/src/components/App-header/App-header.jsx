@@ -4,7 +4,9 @@ import Icon from "../Icon/Icon";
 import { NavLink, Link } from "react-router-dom";
 import cn from "classnames";
 import Container from "../Container/Container";
-import ModalCallback from "../Modals/Modal-Callback/Modal-Callback";
+import ModalCallback from "../Modals/Modal-Callback/ModalCallback";
+import { setModal } from "../../store/slices/modalSlice";
+import { useDispatch } from "react-redux";
 
 /* Style */
 import styles from "./App-header.module.scss";
@@ -33,10 +35,10 @@ const navLinks = [
 ];
 
 const AppHeader = () => {
-  const [modal, setModal] = React.useState(false);
+  const dispatch = useDispatch();
 
   const onChangeState = () => {
-    setModal(!modal);
+    dispatch(setModal(true));
   };
 
   return (
@@ -48,6 +50,7 @@ const AppHeader = () => {
               <Icon name="logo" href="logo" />
               <span>Womazing</span>
             </Link>
+
             <nav className={styles.nav}>
               <ul className={styles.nav_list}>
                 {navLinks.map((link, index) => (
@@ -66,15 +69,18 @@ const AppHeader = () => {
                 ))}
               </ul>
             </nav>
+
             <div className={styles.items}>
               <div className={styles.items_group}>
                 <Button type="mobile" onClick={onChangeState}>
                   <Icon name="mobile" href="mobile" />
                 </Button>
+
                 <a className={styles.call} href="tel:74958235412">
                   <span>+7 (495) 823-54-12</span>
                 </a>
               </div>
+
               <Link className={styles.cart} to="/cart">
                 <Icon name="cart" href="cart" />
               </Link>
@@ -83,7 +89,8 @@ const AppHeader = () => {
         </Container>
       </header>
 
-      <ModalCallback state={modal} onChangeState={onChangeState} />
+      <ModalCallback />
+      <Button />
     </>
   );
 };

@@ -1,0 +1,8 @@
+@use '../../../../../styles/vars' as *;
+@use '../../../../../styles/mixins' as *;
+
+.root {
+	display: flex;
+	flex-direction: column;
+	@include rowGap(3.5)
+}

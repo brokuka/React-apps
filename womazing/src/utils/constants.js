@@ -13,3 +13,9 @@ export const dataUrls = {
   SLIDERS: "http://localhost:3005/sliders",
   ABOUT: "http://localhost:3005/about",
 };
+
+export const modalInputHelper = {
+  REQUIRED: "* Поле обзятельно к заполнению",
+  EMAIL: "* Укажите корректный Email",
+  NUMBER: "* Укажите корректный номер",
+};

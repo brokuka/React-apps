@@ -3,58 +3,51 @@ import Button from "../../../../Button/Button";
 import Input from "../../../../Form/components/Input/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
+import { modalFormSchema } from "../../../../../utils/form-schemas";
+
+/* Style */
+import styles from "./CallBackForm.module.scss";
 
 const CallbackForm = ({ onClickButton }) => {
-  const [data, setData] = React.useState(false);
-
-  const schema = yup.object().shape({
-    name: yup.string().required(),
-    email: yup.string().email().required(),
-    tel: yup.number().positive().integer().max(15),
-  });
-
   const {
     handleSubmit,
-    register,
+    control,
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
-    // resolver: yupResolver(schema),
+    resolver: yupResolver(modalFormSchema),
   });
+
+  const onSubmit = (data) => {
+    console.log(data);
+    onClickButton();
+  };
 
   return (
     <>
-      {/* <Input type="text" placeholder="Имя" autoFocus />
-      <input className="modal_input" type="email" placeholder="E-mail" />
-      <input className="modal_input" type="tel" placeholder="Телефон" />
-
-      <Button fill cover onClick={onClickButton} disabled={!isValid}>
-        Заказать звонок
-      </Button> */}
-      <form onSubmit={handleSubmit(() => setData(true))}>
+      <form onSubmit={handleSubmit(onSubmit)} className={styles.root}>
         <Input
-          type="text"
-          placeholder="Имя"
-          autoFocus
           name="name"
-          {...register("name")}
+          placeholder="Имя"
+          control={control}
+          error={errors?.name?.message}
         />
-        {/* <input
-          className="modal_input"
-          type="email"
-          placeholder="E-mail"
-          {...register("email")}
-        />
-        <input
-          className="modal_input"
-          type="tel"
-          placeholder="Телефон"
-          {...register("tel")}
-        /> */}
-        <Input />
 
-        <Button fill cover onClick={onClickButton} disabled={!isValid}>
+        <Input
+          name="email"
+          placeholder="E-mail"
+          control={control}
+          error={errors?.email?.message}
+        />
+
+        <Input
+          name="tel"
+          placeholder="Телефон"
+          control={control}
+          error={errors?.tel?.message}
+        />
+
+        <Button fill cover disabled={!isValid}>
           Заказать звонок
         </Button>
       </form>

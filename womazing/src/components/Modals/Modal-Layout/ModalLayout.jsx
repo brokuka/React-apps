@@ -1,16 +1,17 @@
 import FocusTrap from "focus-trap-react";
 import React from "react";
-import Button from "../Button/Button";
-import Icon from "../Icon/Icon";
+import Button from "../../Button/Button";
+import Icon from "../../Icon/Icon";
 import PropTypes from "prop-types";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* Style */
-import styles from "./index.module.scss";
+import styles from "./ModalLayout.module.scss";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { setModal } from "../../../store/slices/modalSlice";
 
 const ModalLayout = ({
-  state,
-  changeState,
   style,
   title,
   closeButton,
@@ -24,6 +25,8 @@ const ModalLayout = ({
   const modalClose = React.useRef(null);
   const scrollY = window.scrollY;
   const scrollX = window.scrollX;
+  const dispatch = useDispatch();
+  const { active } = useSelector((state) => state.modal);
 
   function onEscape(e) {
     if (e.key !== "Escape") return;
@@ -41,8 +44,6 @@ const ModalLayout = ({
   }
 
   function attachEvents() {
-    if (!state) return;
-
     if (closeOnEscape) {
       window.addEventListener("keydown", onEscape);
     }
@@ -51,23 +52,22 @@ const ModalLayout = ({
   }
 
   React.useEffect(() => {
-    attachEvents();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
-
-  const onClose = React.useCallback(() => {
-    dettachEvents();
-    changeState();
-    onExit();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
-
-  React.useEffect(() => {
-    if (exitButton) {
-      onClose();
+    if (active) {
+      attachEvents();
     }
+
+    return () => {
+      dettachEvents();
+    };
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exitButton]);
+  }, [active]);
+
+  const onClose = () => {
+    dispatch(setModal(false));
+    dettachEvents();
+    onExit();
+  };
 
   const onClickOverlay = (e) => {
     const target = e.target;
@@ -78,7 +78,7 @@ const ModalLayout = ({
 
   return (
     <AnimatePresence>
-      {state && (
+      {active && (
         <FocusTrap>
           <motion.div
             className={styles.root}
@@ -103,6 +103,12 @@ const ModalLayout = ({
               <h3 className={styles.title}>{title}</h3>
 
               {children}
+
+              {exitButton ? (
+                <Button type="ghost" fill onClick={onClose} fullWidth>
+                  Закрыть
+                </Button>
+              ) : null}
             </div>
           </motion.div>
         </FocusTrap>
@@ -113,7 +119,6 @@ const ModalLayout = ({
 
 ModalLayout.propTypes = {
   state: PropTypes.bool,
-  changeState: PropTypes.func,
   title: PropTypes.string,
   closeButton: PropTypes.bool,
   closeOnBackdrop: PropTypes.bool,
