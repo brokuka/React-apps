@@ -76,7 +76,7 @@ const Button = ({
 
 Button.propTypes = {
   active: PropTypes.bool,
-  //   onClick: PropTypes.oneOfType(PropTypes.func, PropTypes.func),
+  onClick: PropTypes.func,
   type: PropTypes.string,
   color: PropTypes.string,
   fill: PropTypes.bool,

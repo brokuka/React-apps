@@ -16,6 +16,7 @@ const initialState = {
   current: {
     product: null,
     related: null,
+    count: null,
   },
   status: "loading",
 };
@@ -30,6 +31,9 @@ export const productsSlice = createSlice({
     },
     setCategory(state, action) {
       state.categoryId = action.payload;
+    },
+    changeProductCount(state, action) {
+      state.current.count = action.payload;
     },
   },
   extraReducers: {
@@ -48,5 +52,6 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { setProduct, setRelated, setCategory } = productsSlice.actions;
+export const { setProduct, setCategory, changeProductCount } =
+  productsSlice.actions;
 export default productsSlice;

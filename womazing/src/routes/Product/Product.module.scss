@@ -87,3 +87,33 @@
 		}
 	}
 }
+
+.item_count {
+	// @include fixedWidthHeight(128);
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	transform: translateX(-42px);
+	@include animationEase;
+	outline: none;
+
+	svg {
+		opacity: 0;
+		@include animationEase
+	}
+
+	&:hover,
+	&:focus {
+		transform: translateX(0);
+
+		svg {
+			opacity: 1;
+		}
+	}
+
+	button:focus {
+		svg {
+			opacity: 1;
+		}
+	}
+}

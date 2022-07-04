@@ -3,22 +3,27 @@ import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import Main from "../../components/Main/Main";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import Button from "../../components/Button/Button";
 import Row from "./../../components/Row/Row";
 import Col from "./../../components/Col/Col";
 import { useSelector, useDispatch } from "react-redux";
 import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
-import { setProduct, setRelated } from "../../store/slices/productsSlice";
+import {
+  setProduct,
+  changeProductCount,
+} from "../../store/slices/productsSlice";
 
 /* Style */
 import styles from "./Product.module.scss";
+import Icon from "../../components/Icon/Icon";
 
 const Product = () => {
+  const [productCount, setProductCount] = React.useState(1);
+
   const dispatch = useDispatch();
   const { items, current } = useSelector((state) => state.products);
   const { categoryId } = useSelector((state) => state.filter);
-  const { product } = current;
+  const { product, count } = current;
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -28,8 +33,29 @@ const Product = () => {
     );
 
     dispatch(setProduct({ item: getProduct, related: getProductRelates }));
+    setProductCount(1);
     window.scrollTo(0, 0);
   }, [items, id, dispatch]);
+
+  const changeCount = (action) => {
+    switch (action) {
+      case "increase":
+        setProductCount(productCount + 1);
+        break;
+      case "decrease":
+        if (productCount > 1) {
+          setProductCount(productCount - 1);
+        }
+        break;
+      default:
+        return productCount;
+    }
+  };
+
+  const addToCart = () => {
+    dispatch(changeProductCount(count + productCount));
+    setProductCount(1);
+  };
 
   return (
     <Main block>
@@ -95,8 +121,22 @@ const Product = () => {
 
                 <div className={styles.count_cart}>
                   <div className={styles.btn_group}>
-                    <Button type="count">1</Button>
-                    <Button fill>Добавить в корзину</Button>
+                    <div className={styles.item_count}>
+                      <Button onClick={() => changeCount("decrease")}>
+                        <Icon href="minus" name="minus" size={32} />
+                      </Button>
+
+                      <Button type="count" tabIndex="-1">
+                        {productCount}
+                      </Button>
+
+                      <Button onClick={() => changeCount("increase")}>
+                        <Icon href="plus" name="plus" size={32} />
+                      </Button>
+                    </div>
+                    <Button fill onClick={addToCart}>
+                      Добавить в корзину
+                    </Button>
                   </div>
                 </div>
               </Col>
