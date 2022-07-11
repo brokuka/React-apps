@@ -115,5 +115,24 @@
 }
 
 .cart {
+	position: relative;
 	@include adaptiveValue(margin-left, 6.7, 3);
+}
+
+.count {
+	@include fixedWidthHeight(15);
+	display: grid;
+	place-items: center;
+
+	position: absolute;
+	top: -9px;
+	right: -10px;
+
+	border-radius: 50%;
+	background-color: $color-secondary;
+
+	font-size: .9rem;
+	color: $white;
+	line-height: 100%;
+	letter-spacing: 0.02em;
 }

@@ -40,14 +40,6 @@
 	}
 }
 
-// .price {
-// 	@include price(null, 2.9rem);
-
-// 	@include tablet {
-// 		@include price(null, 1rem);
-// 	}
-// }
-
 @include price(null, 2.9rem);
 
 @include tablet {
@@ -70,6 +62,16 @@
 	}
 }
 
+.choosed_size {
+	background-color: $black;
+	color: $white;
+	outline: none;
+}
+
+.choosed_color {
+	border: 2px solid $black;
+}
+
 .size_title,
 .color_title {
 	margin-bottom: 3.4rem;
@@ -84,16 +86,18 @@
 
 		@include tablet {
 			justify-content: center;
+			flex-direction: column;
+			align-items: center;
 		}
 	}
 }
 
 .item_count {
-	// @include fixedWidthHeight(128);
 	display: flex;
 	align-items: center;
 	gap: 1rem;
 	transform: translateX(-42px);
+
 	@include animationEase;
 	outline: none;
 
@@ -111,9 +115,21 @@
 		}
 	}
 
-	button:focus {
+	@include tablet {
+		transform: translateX(0);
+
 		svg {
 			opacity: 1;
+		}
+	}
+
+	button:focus {
+		outline: none;
+
+		svg {
+			opacity: 1;
+			box-shadow: 0 0 0 0.25rem rgba($black, 25%);
+			border-radius: 50%;
 		}
 	}
 }

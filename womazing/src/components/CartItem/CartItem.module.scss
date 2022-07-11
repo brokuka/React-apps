@@ -1,0 +1,69 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	word-break: break-all;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 4.9rem;
+	@include rowGap(7);
+
+	@include text;
+	color: $black;
+
+	@include tablet {
+		@include rowGap(1.5);
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+}
+
+.group {
+	@include columnGap(3.6);
+	flex-wrap: nowrap;
+	align-items: center;
+	padding-left: 4.5rem;
+
+	@include tablet {
+		@include rowGap(2);
+		flex-direction: column;
+		text-align: center;
+		padding-left: 0;
+	}
+}
+
+.price,
+.total {
+	color: $black;
+	word-break: break-all;
+
+	&::before {
+		content: "\0024";
+		color: inherit;
+	}
+}
+
+.price::before {
+	@include tablet {
+		content: "Цена: \0024";
+		color: inherit;
+	}
+}
+
+.count::before {
+	@include tablet {
+		content: "Количество: ";
+		color: inherit;
+	}
+}
+
+.total::before {
+	@include tablet {
+		content: "Всего: \0024";
+		color: inherit;
+	}
+}
+
+.thumbnail {
+	position: relative;
+}

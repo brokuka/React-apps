@@ -1,0 +1,52 @@
+@use '../../../../styles/vars' as *;
+@use '../../../../styles/mixins' as *;
+
+.root {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	transform: translateX(-42px);
+	justify-content: center;
+
+	@include animationEase;
+	outline: none;
+
+	svg {
+		opacity: 0;
+		@include animationEase
+	}
+
+	&:hover,
+	&:focus {
+		transform: translateX(0);
+
+		svg {
+			opacity: 1;
+		}
+	}
+
+	@include tablet {
+		transform: translateX(0);
+
+		svg {
+			opacity: 1;
+		}
+	}
+
+	button:focus {
+		outline: none;
+
+		svg {
+			opacity: 1;
+			box-shadow: 0 0 0 0.25rem rgba($black, 25%);
+			border-radius: 50%;
+		}
+	}
+}
+
+.count {
+	display: grid;
+	place-items: center;
+	@include text-lg;
+	border: 1px solid #AFAFAF;
+}

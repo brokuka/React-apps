@@ -8,7 +8,7 @@ import styles from "./Button.module.scss";
 /**
  *
  * @param {{
- * type: "mobile" | "ghost" | "filter" | "pagination" | "size" | "colors" | "count" | "cartCount" | "cartItemRemove" | "cartRefresh" | "coupon" | "arrow_scroll" | "sliderPrev" | "sliderNext";
+ * type: "mobile" | "ghost" | "filter" | "pagination" | "size" | "colors" | "count" | "cartCount" | "cartItemRemove" | "cartRefresh" | "coupon" | "arrow_scroll" | "sliderPrev" | "sliderNext" | ghostCoupon | "disabled";
  * }}
  *
  */
@@ -28,6 +28,7 @@ const Button = ({
   maxWidth,
   height,
   disabled,
+  counter,
   submit,
   ...props
 }) => {
@@ -58,10 +59,13 @@ const Button = ({
         [styles.cart_count]: type === "cartCount",
         [styles.cart_item_remove]: type === "cartItemRemove",
         [styles.cart_refresh]: type === "cartRefresh",
+        [[styles.cart_refresh, styles.ghost].join(" ")]:
+          type === "cartRefreshGhost",
         [styles.coupon]: type === "coupon",
         [styles.arrow_scroll]: type === "arrow_scroll",
         [styles.slider_prev || className]: type === "sliderPrev",
         [styles.slider_next || className]: type === "sliderNext",
+        [[styles.ghost, styles.coupon].join(" ")]: type === "ghostCoupon",
         [styles.disabled]: disabled,
       })}
       ref={innerRef}
@@ -82,6 +86,7 @@ Button.propTypes = {
   fill: PropTypes.bool,
   cover: PropTypes.bool,
   className: PropTypes.string,
+  disabled: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
 };
 
 export default Button;

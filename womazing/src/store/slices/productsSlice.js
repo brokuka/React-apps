@@ -32,9 +32,6 @@ export const productsSlice = createSlice({
     setCategory(state, action) {
       state.categoryId = action.payload;
     },
-    changeProductCount(state, action) {
-      state.current.count = action.payload;
-    },
   },
   extraReducers: {
     [fetchProducts.pending]: (state) => {

@@ -6,7 +6,7 @@ import cn from "classnames";
 import Container from "../Container/Container";
 import ModalCallback from "../Modals/Modal-Callback/ModalCallback";
 import { setModal } from "../../store/slices/modalSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 /* Style */
 import styles from "./App-header.module.scss";
@@ -36,6 +36,7 @@ const navLinks = [
 
 const AppHeader = () => {
   const dispatch = useDispatch();
+  const { total } = useSelector((state) => state.cart);
 
   const onChangeState = () => {
     dispatch(setModal(true));
@@ -82,6 +83,7 @@ const AppHeader = () => {
               </div>
 
               <Link className={styles.cart} to="/cart">
+                {total > 0 && <span className={styles.count}>{total}</span>}
                 <Icon name="cart" href="cart" />
               </Link>
             </div>

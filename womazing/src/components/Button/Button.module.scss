@@ -138,16 +138,10 @@
 
 	border: 1px solid $black;
 
-	&:hover,
-	&:focus {
+	&:hover {
 		background-color: $black;
 		color: $white;
 		outline: none;
-	}
-
-	&.active {
-		background-color: $black;
-		color: $white;
 	}
 }
 
@@ -160,25 +154,8 @@
 		@include fixedWidthHeight(39);
 	}
 
-	&:hover,
-	&:focus {
+	&:hover {
 		border: 2px solid $black;
-	}
-
-	&.bazaar {
-		background-color: #927876;
-	}
-
-	&.light-gray {
-		background-color: #D4D4D4;
-	}
-
-	&.american-pink {
-		background-color: #FD9696;
-	}
-
-	&.peach-orange {
-		background-color: #FDC796;
 	}
 }
 

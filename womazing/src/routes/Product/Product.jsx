@@ -8,22 +8,24 @@ import Row from "./../../components/Row/Row";
 import Col from "./../../components/Col/Col";
 import { useSelector, useDispatch } from "react-redux";
 import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
-import {
-  setProduct,
-  changeProductCount,
-} from "../../store/slices/productsSlice";
+import { setProduct } from "../../store/slices/productsSlice";
+import { addItemToCart, increaseItemCart } from "../../store/slices/cartSlice";
+import cn from "classnames";
 
 /* Style */
 import styles from "./Product.module.scss";
-import Icon from "../../components/Icon/Icon";
+import ButtonCounter from "../../components/Button/components/ButtonCounter/ButtonCounter";
 
 const Product = () => {
   const [productCount, setProductCount] = React.useState(1);
+  const [productSize, setProductSize] = React.useState(null);
+  const [productColor, setProductColor] = React.useState(null);
 
   const dispatch = useDispatch();
   const { items, current } = useSelector((state) => state.products);
   const { categoryId } = useSelector((state) => state.filter);
-  const { product, count } = current;
+  const cart = useSelector((state) => state.cart);
+  const { product } = current;
   const { id } = useParams();
 
   React.useEffect(() => {
@@ -34,27 +36,52 @@ const Product = () => {
 
     dispatch(setProduct({ item: getProduct, related: getProductRelates }));
     setProductCount(1);
+    setProductColor(null);
+    setProductSize(null);
     window.scrollTo(0, 0);
   }, [items, id, dispatch]);
 
-  const changeCount = (action) => {
-    switch (action) {
-      case "increase":
-        setProductCount(productCount + 1);
-        break;
-      case "decrease":
-        if (productCount > 1) {
-          setProductCount(productCount - 1);
-        }
-        break;
-      default:
-        return productCount;
-    }
+  const addToCart = () => {
+    const productParams = {
+      id: product.id,
+      title: product.title,
+      img: product.img,
+      size: productSize,
+      color: productColor,
+      price: product.prices.price,
+      count: productCount,
+      totalPrice: productCount * product.prices.price,
+    };
+
+    console.log(
+      `Product | totalPrice: ${productParams.totalPrice}, count: ${productParams.count}`
+    );
+
+    const match = cart.items.find(
+      (obj) =>
+        obj.id === productParams.id &&
+        (obj.size || obj.color) === (productParams.size || productParams.color)
+    );
+
+    match
+      ? dispatch(increaseItemCart(match))
+      : dispatch(addItemToCart(productParams));
+
+    setProductCount(1);
+    setProductColor(null);
+    setProductSize(null);
   };
 
-  const addToCart = () => {
-    dispatch(changeProductCount(count + productCount));
-    setProductCount(1);
+  const onClickColor = (color) => {
+    if (productColor === color) return setProductColor(null);
+
+    setProductColor(color);
+  };
+
+  const onClickSize = (size) => {
+    if (productSize === size) return setProductSize(null);
+
+    setProductSize(size);
   };
 
   return (
@@ -103,7 +130,14 @@ const Product = () => {
 
                   <div className={styles.btn_group}>
                     {product.sizes.map((size, index) => (
-                      <Button type="size" key={index}>
+                      <Button
+                        type="size"
+                        key={index}
+                        className={cn({
+                          [styles.choosed_size]: size === productSize,
+                        })}
+                        onClick={() => onClickSize(size)}
+                      >
                         {size}
                       </Button>
                     ))}
@@ -114,27 +148,33 @@ const Product = () => {
                   <h4 className={styles.color_title}>Выберите цвет</h4>
                   <div className={styles.btn_group}>
                     {product.colors.map((color, index) => (
-                      <Button color={color} type="colors" key={index} />
+                      <Button
+                        color={color}
+                        type="colors"
+                        key={index}
+                        className={cn({
+                          [styles.choosed_color]: color === productColor,
+                        })}
+                        onClick={() => onClickColor(color)}
+                      />
                     ))}
                   </div>
                 </div>
 
                 <div className={styles.count_cart}>
                   <div className={styles.btn_group}>
-                    <div className={styles.item_count}>
-                      <Button onClick={() => changeCount("decrease")}>
-                        <Icon href="minus" name="minus" size={32} />
-                      </Button>
+                    <ButtonCounter
+                      state={productCount}
+                      onChange={setProductCount}
+                      size="68px"
+                      iconSize="32px"
+                    />
 
-                      <Button type="count" tabIndex="-1">
-                        {productCount}
-                      </Button>
-
-                      <Button onClick={() => changeCount("increase")}>
-                        <Icon href="plus" name="plus" size={32} />
-                      </Button>
-                    </div>
-                    <Button fill onClick={addToCart}>
+                    <Button
+                      fill
+                      onClick={addToCart}
+                      disabled={!productColor || !productSize}
+                    >
                       Добавить в корзину
                     </Button>
                   </div>
