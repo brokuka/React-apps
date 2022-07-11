@@ -35,7 +35,7 @@ const ButtonCounter = ({
             ? onChange((state) => state - 1)
             : dispatch(decreaseItemCart(filterItem));
         } else {
-          if (window.confirm("Вы точно хотите удалить?")) {
+          if (window.confirm("Вы точно хотите удалить товар?")) {
             dispatch(removeItemFromCart(filterItem));
           }
         }

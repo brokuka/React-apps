@@ -6,11 +6,19 @@ import Icon from "../Icon/Icon";
 
 /* Style */
 import styles from "./CartItem.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ButtonCounter from "../Button/components/ButtonCounter/ButtonCounter";
+import { removeItemFromCart } from "../../store/slices/cartSlice";
 
 const CartItem = () => {
+  const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
+
+  const onClickRemove = (item) => {
+    if (window.confirm("Вы точно хотите удалить товар?")) {
+      dispatch(removeItemFromCart(item));
+    }
+  };
 
   return (
     <>
@@ -19,7 +27,10 @@ const CartItem = () => {
           <Col def={5} tb={12} className="col-5 col-tb-12">
             <Row className={styles.group}>
               <div className={styles.thumbnail}>
-                <Button type="cartItemRemove">
+                <Button
+                  type="cartItemRemove"
+                  onClick={() => onClickRemove(item)}
+                >
                   <Icon name="x" href="x" />
                 </Button>
 
