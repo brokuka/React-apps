@@ -2,9 +2,9 @@ import React from "react";
 import Button from "../../Button";
 import Icon from "../../../Icon/Icon";
 import {
-  increaseItemCart,
-  decreaseItemCart,
-  removeItemFromCart,
+  increaseCartItem,
+  decreaseCartItem,
+  removeCartItem,
 } from "../../../../store/slices/cartSlice";
 
 /* Style */
@@ -26,17 +26,20 @@ const ButtonCounter = ({
       case "increase":
         state
           ? onChange((state) => state + 1)
-          : dispatch(increaseItemCart(filterItem));
+          : dispatch(increaseCartItem(filterItem));
+
         break;
 
       case "decrease":
         if (state > 1 || globalState > 1) {
           state
             ? onChange((state) => state - 1)
-            : dispatch(decreaseItemCart(filterItem));
+            : dispatch(decreaseCartItem(filterItem));
+
+          //   console.log(filterItem);
         } else {
           if (window.confirm("Вы точно хотите удалить товар?")) {
-            dispatch(removeItemFromCart(filterItem));
+            dispatch(removeCartItem(filterItem));
           }
         }
 

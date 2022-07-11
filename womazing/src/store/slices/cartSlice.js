@@ -15,7 +15,26 @@ export const cartSlice = createSlice({
       state.total += action.payload.count;
       state.price += action.payload.price * action.payload.count;
     },
-    increaseItemCart(state, action) {
+    increaseProductCart(state, action) {
+      const match = state.items.find(
+        (obj) =>
+          obj.id === action.payload.id &&
+          (obj.size || obj.color) ===
+            (action.payload.size || action.payload.color)
+      );
+
+      if (match) {
+        match.count += action.payload.count;
+        match.totalPrice += action.payload.totalPrice;
+        state.total += action.payload.count;
+        state.price += action.payload.totalPrice;
+      } else {
+        state.items.push(action.payload);
+        state.total += action.payload.count;
+        state.price += action.payload.price * action.payload.count;
+      }
+    },
+    increaseCartItem(state, action) {
       const match = state.items.find(
         (obj) =>
           obj.id === action.payload.id &&
@@ -34,7 +53,7 @@ export const cartSlice = createSlice({
         state.price += action.payload.price * action.payload.count;
       }
     },
-    decreaseItemCart(state, action) {
+    decreaseCartItem(state, action) {
       const match = state.items.find(
         (obj) =>
           obj.id === action.payload.id &&
@@ -42,7 +61,7 @@ export const cartSlice = createSlice({
             (action.payload.size || action.payload.color)
       );
 
-      if (match && match.count > 1) {
+      if (match) {
         match.count--;
         match.totalPrice -= match.price;
         state.total--;
@@ -53,7 +72,7 @@ export const cartSlice = createSlice({
         state.price += action.payload.price * action.payload.count;
       }
     },
-    removeItemFromCart(state, action) {
+    removeCartItem(state, action) {
       const match = state.items.find(
         (obj) =>
           obj.id === action.payload.id &&
@@ -70,8 +89,9 @@ export const cartSlice = createSlice({
 
 export const {
   addItemToCart,
-  increaseItemCart,
-  decreaseItemCart,
-  removeItemFromCart,
+  increaseProductCart,
+  increaseCartItem,
+  decreaseCartItem,
+  removeCartItem,
 } = cartSlice.actions;
 export default cartSlice;

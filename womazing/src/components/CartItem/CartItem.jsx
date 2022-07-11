@@ -8,17 +8,20 @@ import Icon from "../Icon/Icon";
 import styles from "./CartItem.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import ButtonCounter from "../Button/components/ButtonCounter/ButtonCounter";
-import { removeItemFromCart } from "../../store/slices/cartSlice";
+import { removeCartItem } from "../../store/slices/cartSlice";
 
-const CartItem = () => {
+const CartItem = React.memo(() => {
   const dispatch = useDispatch();
   const { items } = useSelector((state) => state.cart);
 
-  const onClickRemove = (item) => {
-    if (window.confirm("Вы точно хотите удалить товар?")) {
-      dispatch(removeItemFromCart(item));
-    }
-  };
+  const onClickRemove = React.useCallback(
+    (item) => {
+      if (window.confirm("Вы точно хотите удалить товар?")) {
+        dispatch(removeCartItem(item));
+      }
+    },
+    [dispatch]
+  );
 
   return (
     <>
@@ -72,6 +75,6 @@ const CartItem = () => {
       ))}
     </>
   );
-};
+});
 
 export default CartItem;

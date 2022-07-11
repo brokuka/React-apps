@@ -12,8 +12,26 @@ import Button from "./../../components/Button/Button";
 import { Link } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
 
-const Cart = () => {
+const Cart = React.memo(() => {
   const { items, price } = useSelector((state) => state.cart);
+
+  const CouponAndRefresh = React.useCallback(
+    () => (
+      <>
+        <Col def={6} sd={12} className="col-6 col-sd-12">
+          <div className={styles.group}>
+            <input type="text" placeholder="Введите купон" />
+            <Button type="ghostCoupon">Применить купон</Button>
+          </div>
+        </Col>
+
+        <Col def={3} sd={12}>
+          <Button type="cartRefreshGhost">Обновить корзину</Button>
+        </Col>
+      </>
+    ),
+    []
+  );
 
   return (
     <Main block header>
@@ -46,16 +64,7 @@ const Cart = () => {
           <Row className={styles.footer} wrap>
             <Col def={12}>
               <Row className={styles["first-col"]} wrap>
-                <Col def={6} sd={12} className="col-6 col-sd-12">
-                  <div className={styles.group}>
-                    <input type="text" placeholder="Введите купон" />
-                    <Button type="ghostCoupon">Применить купон</Button>
-                  </div>
-                </Col>
-
-                <Col def={3} sd={12}>
-                  <Button type="cartRefreshGhost">Обновить корзину</Button>
-                </Col>
+                <CouponAndRefresh />
               </Row>
             </Col>
 
@@ -91,6 +100,6 @@ const Cart = () => {
       )}
     </Main>
   );
-};
+});
 
 export default Cart;

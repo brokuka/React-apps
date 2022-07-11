@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import styles from "./RelatedProducts.module.scss";
 import { useSelector } from "react-redux";
 
-const RelatedProducts = () => {
+const RelatedProducts = React.memo(() => {
   const { current } = useSelector((state) => state.products);
 
   return (
@@ -20,6 +20,6 @@ const RelatedProducts = () => {
       ) : null}
     </>
   );
-};
+});
 
 export default RelatedProducts;

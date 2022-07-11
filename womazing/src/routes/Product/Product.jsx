@@ -9,14 +9,17 @@ import Col from "./../../components/Col/Col";
 import { useSelector, useDispatch } from "react-redux";
 import RelatedProducts from "../../components/RelatedProducts/RelatedProducts";
 import { setProduct } from "../../store/slices/productsSlice";
-import { addItemToCart, increaseItemCart } from "../../store/slices/cartSlice";
+import {
+  addItemToCart,
+  increaseProductCart,
+} from "../../store/slices/cartSlice";
 import cn from "classnames";
 
 /* Style */
 import styles from "./Product.module.scss";
 import ButtonCounter from "../../components/Button/components/ButtonCounter/ButtonCounter";
 
-const Product = () => {
+const Product = React.memo(() => {
   const [productCount, setProductCount] = React.useState(1);
   const [productSize, setProductSize] = React.useState(null);
   const [productColor, setProductColor] = React.useState(null);
@@ -64,7 +67,7 @@ const Product = () => {
     );
 
     match
-      ? dispatch(increaseItemCart(match))
+      ? dispatch(increaseProductCart(productParams))
       : dispatch(addItemToCart(productParams));
 
     setProductCount(1);
@@ -72,17 +75,23 @@ const Product = () => {
     setProductSize(null);
   };
 
-  const onClickColor = (color) => {
-    if (productColor === color) return setProductColor(null);
+  const onClickColor = React.useCallback(
+    (color) => {
+      if (productColor === color) return setProductColor(null);
 
-    setProductColor(color);
-  };
+      setProductColor(color);
+    },
+    [productColor]
+  );
 
-  const onClickSize = (size) => {
-    if (productSize === size) return setProductSize(null);
+  const onClickSize = React.useCallback(
+    (size) => {
+      if (productSize === size) return setProductSize(null);
 
-    setProductSize(size);
-  };
+      setProductSize(size);
+    },
+    [productSize]
+  );
 
   return (
     <Main block>
@@ -190,6 +199,6 @@ const Product = () => {
       )}
     </Main>
   );
-};
+});
 
 export default Product;
