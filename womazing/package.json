@@ -28,11 +28,11 @@
 	},
 	"scripts": {
 		"start": "react-scripts start & npx json-server db.json -p 3005",
-		"server": "npx json-server db.json -p 3005",
+		"server": "npx json-server server/db.json -p 3005",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"withserverBuild": "concurrently \"npm run server\" \"npm run build\""
+		"withserver": "concurrently \"npm run server\" \"npm start\""
 	},
 	"eslintConfig": {
 		"extends": [
