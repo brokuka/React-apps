@@ -27,11 +27,12 @@
 		"yup": "^0.32.11"
 	},
 	"scripts": {
-		"start": "react-scripts start",
+		"start": "react-scripts start & npx json-server db.json -p 3005",
 		"server": "npx json-server db.json -p 3005",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"withserver": "concurrently \"npm run server\" \"npm start\""
 	},
 	"eslintConfig": {
 		"extends": [
