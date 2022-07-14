@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { modalInputHelper } from "./constants";
+import { modalInputHelper, checkoutInputHelper } from "./constants";
 
 export const modalFormSchema = yup.object().shape({
   name: yup.string().required(modalInputHelper.REQUIRED),
@@ -14,3 +14,5 @@ export const modalFormSchema = yup.object().shape({
     .integer(modalInputHelper.NUMBER)
     .required(modalInputHelper.REQUIRED),
 });
+
+export const checkoutFormSchema = yup.object().shape({});

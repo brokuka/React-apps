@@ -2,6 +2,7 @@
 @use '../../styles/mixins' as *;
 
 .root {
+	display: flex;
 	word-break: break-all;
 	align-items: center;
 	justify-content: space-between;
@@ -66,4 +67,21 @@
 
 .thumbnail {
 	position: relative;
+}
+
+.color {
+	font-size: 0;
+	@include fixedWidthHeight(25);
+	border-radius: 50%;
+}
+
+.params {
+	display: flex;
+	align-items: center;
+	@include columnGap(1);
+	@include rowGap(1);
+
+	@include smDesktop {
+		flex-direction: column;
+	}
 }

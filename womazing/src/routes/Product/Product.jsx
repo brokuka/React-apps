@@ -1,9 +1,9 @@
 import React from "react";
-import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
-import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
+import Breadcrumb from "../../components/ui/Breadcrumbs/components/Breadcrumb";
 import Main from "../../components/Main/Main";
 import { useParams } from "react-router-dom";
-import Button from "../../components/Button/Button";
+import Button from "../../components/ui/Button/Button";
 import Row from "./../../components/Row/Row";
 import Col from "./../../components/Col/Col";
 import { useSelector, useDispatch } from "react-redux";
@@ -17,7 +17,7 @@ import cn from "classnames";
 
 /* Style */
 import styles from "./Product.module.scss";
-import ButtonCounter from "../../components/Button/components/ButtonCounter/ButtonCounter";
+import ButtonCounter from "../../components/ui/Button/components/ButtonCounter/ButtonCounter";
 
 const Product = React.memo(() => {
   const [productCount, setProductCount] = React.useState(1);
@@ -56,14 +56,10 @@ const Product = React.memo(() => {
       totalPrice: productCount * product.prices.price,
     };
 
-    console.log(
-      `Product | totalPrice: ${productParams.totalPrice}, count: ${productParams.count}`
-    );
-
     const match = cart.items.find(
       (obj) =>
         obj.id === productParams.id &&
-        (obj.size || obj.color) === (productParams.size || productParams.color)
+        (obj.size && obj.color) === (productParams.size && productParams.color)
     );
 
     match

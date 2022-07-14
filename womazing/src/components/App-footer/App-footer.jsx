@@ -2,7 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import Col from "../Col/Col";
 import Container from "../Container/Container";
-import Icon from "../Icon/Icon";
+import Icon from "../ui/Icon/Icon";
 import Row from "../Row/Row";
 import cn from "classnames";
 

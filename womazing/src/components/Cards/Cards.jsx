@@ -1,7 +1,6 @@
 import React from "react";
-import Icon from "../Icon/Icon";
+import Icon from "../ui/Icon/Icon";
 import CardItem from "./CardItem";
-import { PropTypes } from "prop-types";
 import cn from "classnames";
 
 /* Style */

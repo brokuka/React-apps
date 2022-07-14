@@ -1,19 +1,20 @@
 import React from "react";
-import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
-import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
+import Breadcrumb from "../../components/ui/Breadcrumbs/components/Breadcrumb";
 import Col from "../../components/Col/Col";
 import Main from "../../components/Main/Main";
 import Row from "../../components/Row/Row";
 import { useSelector } from "react-redux";
+import { AppRoute } from "../../utils/constants";
 
 /* Style */
 import styles from "./Cart.module.scss";
-import Button from "./../../components/Button/Button";
+import Button from "../../components/ui/Button/Button";
 import { Link } from "react-router-dom";
 import CartItem from "../../components/CartItem/CartItem";
 
 const Cart = React.memo(() => {
-  const { items, price } = useSelector((state) => state.cart);
+  const { items, price, total } = useSelector((state) => state.cart);
 
   const CouponAndRefresh = React.useCallback(
     () => (
@@ -71,7 +72,10 @@ const Cart = React.memo(() => {
             <Col def={6} sd={12}>
               <Row className={styles["last-col"]}>
                 <div className={styles["text-group"]}>
-                  Подытог: <span className={styles.price}>{price}</span>
+                  Подытог:
+                  <span className={styles.price}>
+                    {price} ({total}шт)
+                  </span>
                 </div>
 
                 <div className={styles.group}>
@@ -85,7 +89,7 @@ const Cart = React.memo(() => {
                     </Col>
                   </Row>
 
-                  <Link to="/cart">
+                  <Link to={AppRoute.CHECKOUT}>
                     <Button fill height="100%" fullWidth>
                       Оформить заказ
                     </Button>

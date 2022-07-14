@@ -1,13 +1,13 @@
 import React from "react";
 import Main from "./../../components/Main/Main";
-import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
-import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
+import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
+import Breadcrumb from "../../components/ui/Breadcrumbs/components/Breadcrumb";
 import Row from "../../components/Row/Row";
 import Col from "../../components/Col/Col";
+import Button from "../../components/ui/Button/Button";
 
 /* Style */
 import styles from "./Contacts.module.scss";
-import Button from "../../components/Button/Button";
 
 const Contacts = () => {
   return (

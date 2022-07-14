@@ -38,8 +38,8 @@ export const cartSlice = createSlice({
       const match = state.items.find(
         (obj) =>
           obj.id === action.payload.id &&
-          (obj.size || obj.color) ===
-            (action.payload.size || action.payload.color)
+          (obj.size && obj.color) ===
+            (action.payload.size && action.payload.color)
       );
 
       if (match) {
@@ -57,8 +57,8 @@ export const cartSlice = createSlice({
       const match = state.items.find(
         (obj) =>
           obj.id === action.payload.id &&
-          (obj.size || obj.color) ===
-            (action.payload.size || action.payload.color)
+          (obj.size && obj.color) ===
+            (action.payload.size && action.payload.color)
       );
 
       if (match) {
@@ -76,13 +76,18 @@ export const cartSlice = createSlice({
       const match = state.items.find(
         (obj) =>
           obj.id === action.payload.id &&
-          (obj.size || obj.color) ===
-            (action.payload.size || action.payload.color)
+          (obj.size && obj.color) ===
+            (action.payload.size && action.payload.color)
       );
 
       state.items = state.items.filter((item) => item !== match);
       state.total -= match.count;
       state.price -= match.price;
+    },
+    clearCart(state) {
+      state.items = [];
+      state.total = null;
+      state.price = null;
     },
   },
 });
@@ -93,5 +98,6 @@ export const {
   increaseCartItem,
   decreaseCartItem,
   removeCartItem,
+  clearCart,
 } = cartSlice.actions;
 export default cartSlice;

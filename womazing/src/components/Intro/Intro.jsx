@@ -1,18 +1,20 @@
 import React from "react";
-import Container from "../Container/Container";
 import { Pagination, Controller } from "swiper";
 import Row from "../Row/Row";
 import { SwiperSlide } from "swiper/react";
 import cn from "classnames";
 import Col from "../Col/Col";
-import Button from "../Button/Button";
-import Slider from "../Slider/Slider";
-import { imgJpeg1, imgWebp1 } from "../Slider/imgPath";
+import Button from "../ui/Button/Button";
+import Slider from "../ui/Slider/Slider";
+import { imgJpeg1, imgWebp1 } from "../ui/Slider/imgPath";
+import { Link } from "react-router-dom";
+import Icon from "../ui/Icon/Icon";
+import Image from "../Image/Image";
 
 /* Style */
 import styles from "./Intro.module.scss";
-import Icon from "../Icon/Icon";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { dataUrls } from "../../utils/constants";
 
 const textGroup = [
   {

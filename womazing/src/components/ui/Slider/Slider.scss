@@ -1,0 +1,69 @@
+@use '../../../styles/vars' as *;
+@use '../../../styles/mixins' as *;
+
+.swiper {
+	width: 100%;
+
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	overflow: hidden;
+	list-style: none;
+	padding: 0;
+	z-index: 1;
+}
+
+.swiper-slide {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	picture {
+		width: 100%;
+	}
+}
+
+.swiper-wrapper {
+	position: relative;
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	transition-property: transform;
+	box-sizing: content-box;
+}
+
+.swiper-slide {
+	flex-shrink: 0;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transition-property: transform
+}
+
+.dream_team_bullet {
+	display: inline-block;
+	width: 30px;
+	height: 4px;
+
+	cursor: pointer;
+	background-color: rgba($white, 0.36);
+
+	&:not(:last-child) {
+		margin-right: 1.2rem;
+	}
+
+	&_active {
+		background-color: $white;
+	}
+}
+
+.swiper-pagination {
+	position: absolute;
+	text-align: center;
+	transition: .3s opacity;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+}

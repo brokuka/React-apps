@@ -1,10 +1,10 @@
 import React from "react";
 import cn from "classnames";
 import PropTypes from "prop-types";
+import { Controller } from "react-hook-form";
 
 /* Style */
 import styles from "./Input.module.scss";
-import { Controller } from "react-hook-form";
 
 const Input = React.forwardRef(
   (
@@ -25,36 +25,61 @@ const Input = React.forwardRef(
   ) => {
     return (
       <div className={styles.root}>
-        <Controller
-          name={name}
-          control={control}
-          defaultValue={""}
-          render={({ field }) => (
-            <input
-              style={{
-                width: fullWidth ? "100%" : null,
-              }}
-              className={
-                (className || defaultStyles) &&
-                cn(
-                  className,
-                  defaultStyles && {
-                    [styles.text]: type === "text",
-                    [styles.email]: type === "email",
-                    [styles.tel]: type === "tel",
-                    [styles.checkbox]: type === "checkbox",
-                  }
-                )
-              }
-              placeholder={placeholder}
-              type={type}
-              autoFocus={autoFocus}
-              ref={ref}
-              {...props}
-              {...field}
-            />
-          )}
-        />
+        {control ? (
+          <Controller
+            name={name}
+            control={control}
+            defaultValue={""}
+            render={({ field }) => (
+              <input
+                style={{
+                  width: fullWidth ? "100%" : null,
+                }}
+                className={
+                  (className || defaultStyles) &&
+                  cn(
+                    className,
+                    defaultStyles && {
+                      [styles.text]: type === "text",
+                      [styles.email]: type === "email",
+                      [styles.tel]: type === "tel",
+                      [styles.checkbox]: type === "checkbox",
+                    }
+                  )
+                }
+                placeholder={placeholder}
+                type={type}
+                autoFocus={autoFocus}
+                ref={ref}
+                {...props}
+                {...field}
+              />
+            )}
+          />
+        ) : (
+          <input
+            style={{
+              width: fullWidth ? "100%" : null,
+            }}
+            className={
+              (className || defaultStyles) &&
+              cn(
+                className,
+                defaultStyles && {
+                  [styles.text]: type === "text",
+                  [styles.email]: type === "email",
+                  [styles.tel]: type === "tel",
+                  [styles.checkbox]: type === "checkbox",
+                }
+              )
+            }
+            placeholder={placeholder}
+            type={type}
+            autoFocus={autoFocus}
+            ref={ref}
+            {...props}
+          />
+        )}
         {error && <p className={styles.error}>{error}</p>}
       </div>
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AppLayout from "./components/App-layout/App-layout";
-import { ReactComponent as Sprites } from "./components/Icon/sprites.svg";
+import { ReactComponent as Sprites } from "./components/ui/Icon/sprites.svg";
 import { AppRoute } from "./utils/constants";
 import { useDispatch } from "react-redux/es/exports";
 import { fetchProducts } from "./store/slices/productsSlice";
@@ -12,6 +12,7 @@ import Product from "./routes/Product/Product";
 import About from "./routes/About/About";
 import Contacts from "./routes/Contacts/Contacts";
 import Cart from "./routes/Cart/Cart";
+import Checkout from "./routes/Checkout/Checkout";
 
 const App = React.memo(() => {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ const App = React.memo(() => {
           <Route path={AppRoute.ABOUT} element={<About />} />
           <Route path={AppRoute.CONTACTS} element={<Contacts />} />
           <Route path={AppRoute.CART} element={<Cart />} />
+          <Route path={AppRoute.CHECKOUT} element={<Checkout />} />
         </Route>
       </Routes>
     </>

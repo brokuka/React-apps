@@ -1,8 +1,7 @@
 import React from "react";
-import Container from "../../../Container/Container";
 import Cards from "../../../Cards/Cards";
 import CardItem from "../../../Cards/CardItem";
-import Icon from "../../../Icon/Icon";
+import Icon from "../../../ui/Icon/Icon";
 
 /* Style */
 import styles from "./ImportantToUs.module.scss";

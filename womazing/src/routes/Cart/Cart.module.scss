@@ -33,6 +33,7 @@
 	justify-content: space-between;
 	margin-top: 4.9rem;
 	@include rowGap(7);
+	@include animationEase;
 
 	@include text;
 	color: $black;

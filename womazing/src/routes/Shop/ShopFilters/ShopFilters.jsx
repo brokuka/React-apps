@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/ui/Button/Button";
 import { useSelector, useDispatch } from "react-redux/es/exports";
 import { setCategoryId } from "../../../store/slices/filterSlice";
 

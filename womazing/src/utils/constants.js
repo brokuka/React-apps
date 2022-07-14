@@ -5,6 +5,7 @@ export const AppRoute = {
   ABOUT: "/about",
   CONTACTS: "/contacts",
   CART: "/cart",
+  CHECKOUT: "/checkout",
 };
 
 export const dataUrls = {
@@ -15,6 +16,12 @@ export const dataUrls = {
 };
 
 export const modalInputHelper = {
+  REQUIRED: "* Поле обзятельно к заполнению",
+  EMAIL: "* Укажите корректный Email",
+  NUMBER: "* Укажите корректный номер",
+};
+
+export const checkoutInputHelper = {
   REQUIRED: "* Поле обзятельно к заполнению",
   EMAIL: "* Укажите корректный Email",
   NUMBER: "* Укажите корректный номер",

@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../../components/Button/Button";
+import Button from "../../../components/ui/Button/Button";
 import Cards from "../../../components/Cards/Cards";
 import { useSelector } from "react-redux/es/exports";
 

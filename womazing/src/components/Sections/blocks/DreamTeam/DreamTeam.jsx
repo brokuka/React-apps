@@ -1,11 +1,10 @@
 import React from "react";
-import Container from "../../../Container/Container";
 import Row from "../../../Row/Row";
 import Col from "../../../Col/Col";
 import { Link } from "react-router-dom";
-import Slider from "../../../Slider/Slider";
+import Slider from "../../../ui/Slider/Slider";
 import { Navigation, Pagination, A11y } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import {
   DreamTeam1_jpg,
   DreamTeam2_jpg,
@@ -13,9 +12,9 @@ import {
   DreamTeam1_webp,
   DreamTeam2_webp,
   DreamTeam3_webp,
-} from "../../../Slider/imgPath";
-import Button from "../../../Button/Button";
-import Icon from "../../../Icon/Icon";
+} from "../../../ui/Slider/imgPath";
+import Button from "../../../ui/Button/Button";
+import Icon from "../../../ui/Icon/Icon";
 
 /* Style */
 import styles from "./DreamTeam.module.scss";

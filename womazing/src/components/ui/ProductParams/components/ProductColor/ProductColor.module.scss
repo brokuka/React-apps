@@ -1,0 +1,7 @@
+@use '../../../../../styles/mixins' as *;
+
+.root {
+	display: inline-block;
+	@include fixedWidthHeight(20);
+	border-radius: 50%;
+}

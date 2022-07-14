@@ -1,0 +1,214 @@
+@use '../../styles/vars' as *;
+@use '../../styles/mixins' as *;
+
+.root {
+	display: flex;
+	// flex-direction: column;
+	@include rowGap(3);
+	justify-content: space-between;
+}
+
+.block_title {
+	@include text-h3;
+	margin-bottom: 4.7rem;
+
+	@include tablet {
+		text-align: center;
+	}
+}
+
+.input_group {
+	@include rowGap(3.5);
+	flex-direction: column;
+}
+
+.first_col {
+	flex-direction: column;
+	@include rowGap(8.1, 4.1);
+}
+
+.second_col {
+	@include rowGap(13.5, 3.5);
+	flex-direction: column;
+	flex-wrap: nowrap;
+	padding-left: 1.8rem;
+
+	@include smDesktop {
+		padding-left: 0;
+	}
+}
+
+.order_group {
+	justify-content: space-between;
+
+	>*:not(:last-child) {
+		margin-bottom: 3rem;
+	}
+
+	>*:last-child {
+		margin-bottom: 1.5rem;
+	}
+
+	>* {
+		width: 100%;
+	}
+}
+
+.title_group {
+	justify-content: space-between;
+	word-break: break-all;
+}
+
+.product,
+.pre_cost {
+	@include text;
+	justify-content: space-between;
+	align-items: center;
+	word-break: break-all;
+}
+
+.product {
+	@include rowGap(3)
+}
+
+
+.product_name {
+	display: flex;
+	flex-direction: column;
+	@include rowGap(.5);
+	@include text;
+}
+
+.total {
+	align-items: center;
+	justify-content: space-between;
+	padding: 15px 1.8rem;
+	margin: 0 -1.8rem;
+
+	background-color: $color-ecru-white;
+
+	@include smDesktop {
+		margin: 0;
+	}
+
+	@include text-h4;
+	word-break: break-all;
+
+	@include smDesktop {
+		flex-direction: column;
+		text-align: center;
+	}
+}
+
+.payment {
+	@include smDesktop {
+		text-align: center;
+	}
+
+	label {
+		@include columnGap(1.4);
+		display: inline-flex;
+		flex-wrap: wrap;
+		align-items: center;
+		margin-bottom: 4.7rem;
+
+		@include text;
+		color: $black;
+		user-select: none;
+		word-break: break-all;
+		cursor: pointer;
+
+		@include smDesktop {
+			display: flex;
+			justify-content: center;
+		}
+	}
+}
+
+.checkbox {
+	@include fixedWidthHeight(22);
+	margin: 0;
+
+	border: 1px solid $black;
+	background: none;
+
+	appearance: none;
+	position: relative;
+	cursor: pointer;
+
+	&:focus {
+		box-shadow: 0 0 0 0.25rem rgba($black, 25%);
+	}
+
+	&::before {
+		@include fixedWidthHeight(10);
+		content: "";
+		display: inline-block;
+
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(0);
+
+		transition: 120ms transform ease-in-out;
+		background-color: $black;
+	}
+
+	&:checked {
+		&::before {
+			transform: translate(-50%, -50%) scale(1);
+		}
+	}
+}
+
+.col_title {
+	@include text-h4;
+}
+
+.cost {
+	color: $black;
+
+	&::before {
+		content: "\0024";
+
+		color: inherit;
+	}
+}
+
+
+
+input,
+textarea {
+	@include animationEase;
+	font-family: inherit;
+	@include text;
+
+	border: none;
+	border-bottom: 1px solid #868686;
+
+	&:focus {
+		outline: none;
+		border-color: $black;
+	}
+
+	&::placeholder {
+		@include text;
+		color: #868686;
+	}
+}
+
+input[type="text"] {
+	width: 100%;
+	padding: 0;
+	@include adaptiveValue(padding-bottom, 1.6, 1);
+
+	@include smDesktop {
+		max-width: 100%;
+	}
+}
+
+textarea {
+	@include adaptiveValue(height, 13.4, 10);
+	width: 100%;
+	resize: none;
+}

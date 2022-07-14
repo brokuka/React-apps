@@ -4,6 +4,7 @@ import aboutSlice from "./slices/aboutSlice";
 import filterSlice from "./slices/filterSlice";
 import modalSlice from "./slices/modalSlice";
 import cartSlice from "./slices/cartSlice";
+import slidersSlice from "./slices/slidersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
     [aboutSlice.name]: aboutSlice.reducer,
     [modalSlice.name]: modalSlice.reducer,
     [cartSlice.name]: cartSlice.reducer,
+    [slidersSlice.name]: slidersSlice.reducer,
   },
 });

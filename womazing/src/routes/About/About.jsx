@@ -1,7 +1,7 @@
 import React from "react";
-import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
+import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
+import Breadcrumb from "../../components/ui/Breadcrumbs/components/Breadcrumb";
 import Row from "../../components/Row/Row";
-import Breadcrumbs from "./../../components/Breadcrumbs/Breadcrumbs";
 import Main from "./../../components/Main/Main";
 import { useSelector } from "react-redux/es/exports";
 import AboutItem from "./AboutItem";

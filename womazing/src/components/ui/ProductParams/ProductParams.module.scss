@@ -1,0 +1,11 @@
+@use '../../../styles/mixins' as *;
+
+.root {
+	display: flex;
+	@include columnGap(1);
+	justify-content: center;
+
+	@include smDesktop {
+		justify-content: flex-start;
+	}
+}

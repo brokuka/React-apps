@@ -1,6 +1,6 @@
 import React from "react";
-import Breadcrumb from "../../components/Breadcrumbs/Breadcrumb";
-import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../components/ui/Breadcrumbs/Breadcrumbs";
+import Breadcrumb from "../../components/ui/Breadcrumbs/components/Breadcrumb";
 
 const ShopHeader = () => {
   return (

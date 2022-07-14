@@ -1,10 +1,10 @@
 import React from "react";
-import Button from "../Button/Button";
-import Icon from "../Icon/Icon";
+import Button from "../ui/Button/Button";
+import Icon from "../ui/Icon/Icon";
 import { NavLink, Link } from "react-router-dom";
 import cn from "classnames";
 import Container from "../Container/Container";
-import ModalCallback from "../Modals/Modal-Callback/ModalCallback";
+import ModalCallback from "../ui/Modals/Modal-Callback/ModalCallback";
 import { setModal } from "../../store/slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -37,9 +37,11 @@ const navLinks = [
 const AppHeader = () => {
   const dispatch = useDispatch();
   const { total } = useSelector((state) => state.cart);
+  const [active, setActive] = React.useState(false);
 
   const onChangeState = () => {
     dispatch(setModal(true));
+    setActive(!active);
   };
 
   return (
@@ -90,8 +92,7 @@ const AppHeader = () => {
           </div>
         </Container>
       </header>
-
-      <ModalCallback />
+      {active && <ModalCallback onExit={() => setActive(false)} />}
       <Button />
     </>
   );

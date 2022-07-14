@@ -1,11 +1,8 @@
 import React from "react";
-import Container from "../../../Container/Container";
 import { Link } from "react-router-dom";
 import Cards from "../../../Cards/Cards";
-import Button from "../../../Button/Button";
-import { useSelector, useDispatch } from "react-redux/es/exports";
-import axios from "axios";
-import { filterProducts } from "../../../../store/slices/productsSlice";
+import Button from "../../../ui/Button/Button";
+import { useSelector } from "react-redux/es/exports";
 
 /* Style */
 import styles from "./NewCollection.module.scss";
